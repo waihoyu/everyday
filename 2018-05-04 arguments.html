@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        (function(param) {
+            param.apple = function() {
+                console.log('apple is running')
+            }
+        })(window)
+
+        apple();
+
+        // var ban = function(n) {
+        //     if (n <= 1)
+        //         return 1;
+        //     else
+        //         return n * arguments.callee(n - 1);
+        // }
+        // ban(5);
+
+
+        function factorial(num) {
+            if (num <= 1) {
+                return 1;
+            } else {
+                return num * arguments.callee(num - 1);
+            }
+        }
+        console.log(factorial(5));
+
+        function show(n) {
+            arr = [];
+            return (function() {
+                arr.unshift(n);
+                n--;
+                if (n) {
+                    arguments.callee(n);
+                }
+                return arr;
+            })()
+        }
+        console.log(show(5));
+        console.log((function() {
+            if (0) {
+                return 0
+            } else {
+                return 1
+            }
+        })())
+    </script>
+</body>
+
+</html>

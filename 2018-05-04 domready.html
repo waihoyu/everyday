@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="divMsg">
+
+    </div>
+    <script>
+        //setTimeout Dom Ready
+        // var setTimeoutReady = function() {
+        //     document.getElementById("divMsg").innerHTML += "<br/> setTimeout , readyState:" + document.readyState;
+        // };
+        // var setTimeoutBindReady = function() {
+        //     /in/.test(document.readyState) ? setTimeout(arguments.callee, 3000) : setTimeoutReady();
+        // };
+        // setTimeoutBindReady();
+        // document.onreadystatechange = 
+        // window.frameElement
+
+        var apple = function() {};
+        apple.prototype.html = function() {
+            console.log('apple is runing')
+        }
+
+        var a = new apple().html();
+    </script>
+</body>
+
+</html>
