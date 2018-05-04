@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>懒加载图片</title>
+    <script src='lazyload.js'></script>
+</head>
+<!-- 
+    网页在渲染的时候，http请求数量，chrome 性能最好，同时并发的请求数十几个。
+    将图片下载  放到 dom  ready 事件之后  将有效提升网页打开速度。
+    占位图片。
+    优化前，n张图片 url  不一样http请求数是n
+    优化后，图片上的http 数量只有1
+    如果url 一样，不会重复发送，
+    
+-->
+
+<body>
+    <img class="pic1" src="http://static.youku.com/yk/vmanage/img/manage/video/mask.d53611efc6.png
+    " origin_src="http://g.hiphotos.baidu.com/image/pic/item/f3d3572c11dfa9ec8c2d744c6ed0f703918fc16d.jpg">
+    <script>
+        // 已经是用户看到了网页了，dom ready
+        //优化图片下载，将其退后
+        // window.onload = function() {            
+        //     // 在页面打开后，重新下载图片
+        //     const img = document.querySelector('.pic1');
+        //     // origin_src  自定义属性
+        //     const url = img.getAttribute('origin_src');
+        //     console.log(url);
+        //     // img.src = url;
+        //     img.setAttribute('src', url);
+        //     const oImg = document.createElement('img');
+        //     oImg.style.display = 'none';
+        //     document.body.appendChild(oImg);
+        //     //图片下载是异步的，因为图片有大小
+        //     // oImg.src = url;
+        //     oImg.onload = function() {
+        //         //幕后工作者  已经下载了图片;
+        //         // url  一旦下载，在浏览器缓存文件
+        //         img.src = url;
+        //     }
+        //     oImg.src = url;
+        // }
+        window.onload = function() {
+            const img = document.querySelector('.pic1');
+            LazyLoadImage.setSrc(img);
+        }
+    </script>
+</body>
+
+</html>
