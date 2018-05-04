@@ -21,6 +21,7 @@ var LazyLoadImage = (function() {
             const oImg = document.createElement('img');
             //不会影响页面，none 会离开文档流
             // opacity:0 这个会撑长页面
+            document.body.appendChild(oImg);
 
             oImg.style.display = 'none';
             // 注册页面
@@ -33,13 +34,16 @@ var LazyLoadImage = (function() {
             oImg.onload = function() {
                     // 不会立即执行
                     // 后执行
-                    console.log('图片下载完成了')
+                    //console.log('图片下载完成了')
                     ele.src = url;
+                    // document.body.removeChild(oImg);
+                    document.body.removeChild(this);
                 }
                 //先执行
-            console.log('设置src');
+                // console.log('设置src');
             oImg.src = url;
-
         }
+
     }
-})()
+    // console.log('delete');
+})();
