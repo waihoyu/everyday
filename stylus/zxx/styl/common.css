@@ -2,5 +2,12 @@
   background-color: #123456;
   width: 100px;
   height: 100px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
   border-radius: 5px;
+  -webkit-box-shadow: 1px 1px 10px #000;
+  -moz-box-shadow: 1px 1px 10px #000;
+  -ms-box-shadow: 1px 1px 10px #000;
+  box-shadow: 1px 1px 10px #000;
 }

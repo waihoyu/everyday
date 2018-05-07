@@ -1,12 +1,24 @@
 bg_color = #123456
 box_size = 100px
 
+vendor(prop,args)
+ -webkit-{prop} args
+ -moz-{prop} args
+ -ms-{prop} args
+ {prop} args
+
 // 能不能我只写标准属性，前缀帮生成？ mixin  混合
+border-radius()
+ vendor('border-radius',arguments)
 
 
+box-shadow()
+ vendor('box-shadow',arguments)
 
 .box
     background-color bg_color
     width box_size
     height box_size
-    border-radius 5px
+    border-radius(5px)
+    box-shadow(1px 1px 10px rgba(0,0,0,5)) 
+    
