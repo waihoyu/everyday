@@ -38,12 +38,15 @@
             document.querySelector('#nicknameInput').value = user.data.nickname || '';
         }
 
-        var getUserInfo = function(uid, fn) {
+        var getUserInfo = function(uid, ...fn) {
             const user_id = 1001;
             const URL = 'https://www.easy-mock.com/mock/5af03ac5957fd4308a30b9c0/api/userinfo#!method=get';
             fetch(URL).then(data => data.json()).then(data => {
                 // console.log(data.data.nickname);
-                fn(data);
+                //fn(data);
+                fn.forEach(func => {
+                    func(data)
+                })
 
             })
         }
