@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>小家</title>
+</head>
+
+<body>
+    JS编程，函数式编程是现在最当红的高级编程风格
+    <div id="username">
+
+        <img src="" alt="" id="avatar">
+        <p id="username1"></p>
+    </div>
+
+    <form action="" name="userForm">
+        <div class="field">
+            <label for="avatarInput">头像</label>
+            <img name="avatar" id="avatarInput" src="" alt="">
+        </div>
+        <div class="field">
+            <label for="nicknameInput">昵称</label>
+            <input type="text" name="avatar" id="nicknameInput">
+        </div>
+
+    </form>
+
+    <script>
+        window.onload = function() {
+            getUserInfo('', renderUserInfo);
+        }
+
+        function renderUserInfo(user) {
+            document.querySelector('#avatar').src = user.data.avatar || '';
+            document.querySelector('#nicknameInput').value = user.data.nickname || '';
+        }
+
+        var getUserInfo = function(uid, fn) {
+            const user_id = 1001;
+            const URL = 'https://www.easy-mock.com/mock/5af03ac5957fd4308a30b9c0/api/userinfo#!method=get';
+            fetch(URL).then(data => data.json()).then(data => {
+                // console.log(data.data.nickname);
+                fn(data);
+
+            })
+        }
+    </script>
+</body>
+
+</html>

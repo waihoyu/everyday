@@ -15,3 +15,5 @@ function compute(a, b, fn) {
 }
 //函数过去，函数名代表函数
 console.log(compute(1, 2, divide));
+//js callback fn
+//练习将函数作为参数;
