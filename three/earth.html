@@ -9,9 +9,95 @@
 </head>
 
 <body>
-    <!-- 阻塞html 下载  要把js文件放到后面 -->
+    <div class="container">
+    </div>
+    <canvas id="webglcanvas">
+    </canvas>
+    <!-- 阻塞html 下载  要把js文件放到后面 
+    相对路径 
+    cdn
+    静态资源是要放置到专门的静态资源服务器
+    node.js  java php  动态程序  后端服务器
+    -->
     <script src="libs/three.min.js"></script>
     <script src="libs/stats.min.js"></script>
+    <script>
+
+        // 舞台scene
+        // 灯光light
+        // 相机 Camera
+        // 元素 mesh
+        // 按贞刷新  requestAnimationFrame
+        // render Canvas
+        const container =
+            document.querySelector('#container');
+        let canvas, stats,
+            camera, scene, renderer, group;
+
+        let mouseX = 0, mouseY = 0;
+        let windoHalfX = window.innerWidth / 2;
+        let windoHalfY = window.innerHeight / 2;
+        function init() {
+            canvas = document.getElementById('webglcanvas');
+            camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 200);
+            camera.position.z = 500;
+            //场景
+            scene = new THREE.Scene();
+            scene.background = new THREE.Color(0xffffff);
+            ground = new THREE.Group();
+            scene.add(group);
+            // scene<-group<-mesh
+            // 地球的过程
+            const loader = new THREE.TextureLoader();
+            loader.load('images/land_ocean_ice_cloud_2048.jpg', function (texture) {
+                const geometry = new THREE.SphereGeometry(200, 20, 20);
+                //烟雾
+                const material = new THREE.MeshBasicMaterial({
+                    map: texture
+                });
+                const mesh = new THREE.Mesh(geometry, material);
+                group.add(mesh);
+
+            });
+            renderer = new THREE.WebGLRenderer({
+                canvas: canvas,
+                antialias: true
+            })
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            stats = new Stats();
+            container.appendChild(stats.dom);
+        }
+        function animate() {
+            requestAnimationFrame(animate);
+            render();
+            stats.update();
+        }
+        function render() {
+            camera.position.x += (mouseX - camera.position.x) * 0.05;
+            camera.position.y += (-mouseY - camera.position.y) * 0.05;
+            camera.lookAt(scene.position);
+            // renderer.render(scene, camera);
+            group.rotation.y -= 0.005;
+            renderer.render(scene, camera);
+        }
+        function onDocumentMouseMove(event) {
+            //基于左上角
+            //鼠标相对于屏幕中心点的偏移量
+            mouseX = (event.clientX - windowHalfX);
+            mouseY = (event.clientY - windowHalfY);
+            // console.log();
+        }
+        function onWindowResize() {
+            windoHalfX = window.innerWidth / 2;
+            windoHalfY = window.innerHeight / 2;
+        }
+        window.onload = function () {
+            init();
+            animate();
+            window.addEventListener('mousemove', onDocumentMouseMove, false);
+            window.addEventListener('resize', onWindowResize, false);
+        }
+    </script>
 </body>
 
 </html>
