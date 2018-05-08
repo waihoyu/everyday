@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>  
+<head>  
+    <title>webgl-lesson1</title>  
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">  
+    <script type="text/javascript">  
+        var webgl = null;  
+        function Init()  
+        {  
+            var canvas = document.getElementById("myCanvas"); //获取canvas对象  
+            // webgl = canvas.getContext
+            webgl = canvas.getContext("webgl");//通过canvas创建webgl对象  
+            console.log(canvas.clientWidth);
+            webgl.viewport(100,200,canvas.clientWidth,canvas.clientHeight);//webgl对象在canvas上创建一个视口  
+            webgl.clearColor(1.0,0.0,0.0,1.0);//将缓冲区清空为黑色  
+            webgl.clear(webgl.COLOR_BUFFER_BIT);//执行清空操作  
+        }   
+  
+    </script>  
+</head>  
+<body onload="Init()">  
+    <canvas id="myCanvas" style="border:10px solid blue;" width="601" height="450"></canvas>  
+    <p id="myp"></p>
+</body>  
