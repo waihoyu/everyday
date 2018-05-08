@@ -1,0 +1,94 @@
+html
+  font-size 24px
+
+.mod_container
+    position  absolute
+    left 0
+    top 0
+    width 100%
+    height  100%
+    background #010233
+    overflow hidden
+.part
+    display none
+    &.in 
+      display block
+.timeline
+    position absolute
+    width 100%
+    height  100%
+    top 0
+    left 0
+    &_tit
+      position relative
+      padding 1.0371rem 0 0 0.4445rem
+      font-size 0.8889rem
+      line-height 1.3334rem
+      color #fff
+      text-align center
+      span 
+        display block
+        font-size 0.5334rem
+        line-height 0.7408rem
+      &:after
+        content: ""
+        position absolute
+        width 1.363rem
+        height 1px
+        background #f00
+        bottom 0
+        left 50%
+        margin-left -0.6814rem
+    &_icon
+        position relative
+        width 1.5112rem
+        height 1.5112rem
+        margin 0.5334rem auto 0
+        background url("./images/p3_01.png") no-repeat center
+        background-size 0.8445rem 0.7408rem
+        svg
+          width 1.5112rem
+          height 1.5112rem
+          stroke #0084ff
+          stroke-width 2px
+          fill none 
+          stroke-dasharray 320
+        
+       
+// 嵌套是stylus 使用缩进来代表结构层次关系
+// 省去写.in .tit  一直嵌套是会缠死的，分些出去。
+// 表现与状态区分开来
+// 动作效果  要分离出来
+// 嵌套规则严格遵守的话，会失去灵活性
+// CSS类名 样式  可以叠加
+.part3.in
+  .timeline_tit
+    animation on_tl_tit ease-out 0.4s 1.4s both   //both 会是考题的考点
+    span
+      animation on_tl_tit_s ease-in 0.4s 1.4s both
+    &:after
+      animation on_tl_tit_a 0.2s 1.8s both
+
+@keyframes on_tl_tit
+  0% 
+    transform translate3d(0,-5.9259rem,0)
+  100%
+    transform translate3d(0,0,0)
+
+@keyframes on_tlt_tit_s 
+  0%
+    transform translate3d(0,100%,0)
+  100%
+    transform translate3d(0,0,0)
+
+@keyframes on_tl_tit_a 
+  0%
+    transform scale(0,1)
+  100%
+    transform scale(1,1)  
+
+
+
+
+
+
