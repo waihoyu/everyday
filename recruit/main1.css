@@ -51,7 +51,7 @@ html {
   width: 1.5112rem;
   height: 1.5112rem;
   margin: 0.5334rem auto 0;
-  background: url("./images/p3_01.png") no-repeat center;
+  background: url("/images/p3_01.png") no-repeat center;
   background-size: 0.8445rem 0.7408rem;
 }
 .timeline_icon svg {
@@ -76,13 +76,14 @@ html {
 .timeline_line {
   list-style: none;
   position: absolute;
-  height: 100%;
   width: 1px;
-  background: #f00;
+  height: 100%;
+  background: #0084ff;
   top: 0;
   left: 50%;
 }
 .timeline_item {
+  position: relative;
   flex: 1;
   display: flex;
   align-items: center;
@@ -106,7 +107,7 @@ html {
 }
 .timeline_item_cnt {
   flex: 1;
-  padding: 0 1.481rem;
+  padding: 0 1.4815rem;
 }
 .timeline_item_cnt:nth-child(1) {
   text-align: right;
@@ -147,15 +148,15 @@ html {
   animation: on_tl_tit ease-out 0.4s 1.4s both;
 }
 .part3.in .timeline_tit span {
-  animation: on_tl_tit_s ease-in 0.4s 1.4s both;
+  animation: on_tl_tit_s ease_in 0.4s 1.4s both;
 }
 .part3.in .timeline_tit:after {
   animation: on_tl_tit_a 0.2s 1.8s both;
 }
-.part3.in .itmeline_icon {
+.part3.in .timeline_icon {
   animation: on_tl_icon 1.2s 0.5s linear both;
 }
-.part3.in .itmeline_icon svg {
+.part3.in .timeline_icon svg {
   animation: on_tl_iconsvg 0.5s 0.9s linear both;
 }
 .part3.in .timeline_line {
