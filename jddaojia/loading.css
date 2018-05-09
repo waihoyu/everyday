@@ -43,6 +43,17 @@
   border-top-color: #f9c922;
   animation: spin 1.5s linear infinite;
 }
+.loading .after2 {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
+  border: 3px solid transparent;
+  border-radius: 50%;
+  border-top-color: #00f;
+  animation: spin 1.5s linear infinite;
+}
 .loading .text {
   width: 100px;
   position: absolute;
@@ -59,7 +70,7 @@
     transform: rotate(0deg);
   }
   100% {
-    transform: rotate(360deg);
+    transform: rotate(250deg);
   }
 }
 @-webkit-keyframes spin {
@@ -67,7 +78,7 @@
     transform: rotate(0deg);
   }
   100% {
-    transform: rotate(360deg);
+    transform: rotate(250deg);
   }
 }
 @-o-keyframes spin {
@@ -75,7 +86,7 @@
     transform: rotate(0deg);
   }
   100% {
-    transform: rotate(360deg);
+    transform: rotate(250deg);
   }
 }
 @keyframes spin {
@@ -83,6 +94,6 @@
     transform: rotate(0deg);
   }
   100% {
-    transform: rotate(360deg);
+    transform: rotate(250deg);
   }
 }
