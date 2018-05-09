@@ -170,3 +170,144 @@ body {
 #db-global-nav a:active {
     color: #d5d5d5;
 }
+
+#db-global-nav .top-nav-info {
+    float: right;
+    margin: 0 12px 0 0;
+    line-height: 28px;
+}
+
+#db-global-nav .top-nav-info a {
+    display: inline-block;
+    zoom: 1;
+    margin: 0;
+    padding: 0 12px;
+    height: 28px;
+}
+
+#db-global-nav .top-nav-doubanapp {
+    position: relative;
+    float: right;
+    margin-right: 5px;
+    line-height: 28px;
+}
+
+#db-global-nav .more-active {
+    /* z-index: 10; */
+}
+
+#db-global-nav .top-nav-doubanapp .lnk-doubanapp {
+    display: inline-block;
+    zoom: 1;
+    padding: 0 8px;
+    height: 28px;
+}
+
+#db-global-nav .more-items {
+    display: block;
+    position: absolute;
+    border: 1px solid #e6e6e6;
+    background: white;
+    white-space: nowrap;
+    top: 28px;
+    height: 500px;
+}
+
+
+/* #db-global-nav .more-items {
+    display: block;
+    border: 1px solid #e6e6e6;
+    background: #ffffff;
+    white-space: nowrap;
+    top: 28px;
+}
+*/
+
+#db-global-nav .top-nav-doubanapp .more-items {
+    padding: 10px 20px 30px;
+    left: -76px;
+    width: 211px;
+    border-top: none;
+    color: #111111;
+    font-size: 15px;
+    line-height: 1.62;
+    font-weight: bold;
+    text-align: center;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+#db-global-nav .top-nav-doubanapp .more-items .appintro-title {
+    padding-top: 170px;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 24px;
+    font-weight: 400;
+    background: url(https://img3.doubanio.com/dae/accounts/resources/321e246/shire/assets/nav_doubanapp_6.png) no-repeat center;
+}
+
+#db-global-nav .top-nav-doubanapp .more-items .qrcode {
+    padding-top: 160px;
+    margin-top: 30px;
+    font-size: 0;
+    background: url(https://img3.doubanio.com/dae/accounts/resources/321e246/shire/assets/nav_doubanapp_6_qrcode.png) no-repeat center;
+}
+
+#db-global-nav .top-nav-doubanapp .download {
+    margin-top: 10px;
+}
+
+#db-global-nav .top-nav-doubanapp .download a:link,
+#db-global-nav .top-nav-doubanapp .download a:visited {
+    color: #3377aa;
+}
+
+#db-global-nav .top-nav-doubanapp .download a {
+    display: inline;
+    font-weight: normal;
+    font-size: 12px;
+    background: none;
+    padding: 0;
+}
+
+#db-global-nav .top-nav-doubanapp .download .download-android {
+    margin-top: 8px;
+    background-position: 0 -130px;
+}
+
+#db-global-nav .top-nav-doubanapp .download a {
+    display: inline;
+    font-weight: normal;
+    font-size: 12px;
+    background: none;
+    padding: 0;
+}
+
+#db-global-nav #doubanapp-tip {
+    display: none;
+    position: absolute;
+    top: 28px;
+    bottom: 1px sold;
+    padding: 0 30px 0 10px;
+    color: #13bc39;
+    background: #ffffff;
+    z-index: 10;
+    white-space: nowrap;
+}
+
+#db-global-nav #doubanapp-tip .tip-link:link,
+#db-global-nav #doubanapp-tip .tip-link:visited,
+#db-global-nav #doubanapp-tip .tip-link:hover,
+#db-global-nav #doubanapp-tip .tip-link:active {
+    color: #13bc39;
+    background: #ffffff;
+}
+
+#db-global-nav .more-items a {
+    display: block;
+    padding: 0 20px;
+    line-height: 28px;
+}
+
+
+/* .more-active */
