@@ -1,6 +1,7 @@
 const arr = [1, 2, 3, 4, 1, 4, 5, 3];
 const arr2 = [];
 
+
 function unique(arr) {
     if (!Array.isArray(arr)) {
         console.log("type error")
