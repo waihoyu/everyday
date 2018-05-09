@@ -48,15 +48,15 @@ html {
 }
 .timeline_icon {
   position: relative;
-  width: 1.5112rem;
+  width: 2.5112rem;
   height: 1.5112rem;
   margin: 0.5334rem auto 0;
   background: url("./images/p3_01.png") no-repeat center;
   background-size: 0.8445rem 0.7408rem;
 }
 .timeline_icon svg {
-  width: 1.5112rem;
-  height: 1.5112rem;
+  width: 2.5112rem;
+  height: 2.5112rem;
   stroke: #0084ff;
   stroke-width: 2px;
   fill: none;
@@ -87,6 +87,7 @@ html {
   display: flex;
   align-items: center;
   z-index: 9;
+  background: red;
 }
 .timeline_item b {
   position: absolute;
@@ -97,7 +98,7 @@ html {
   top: 50%;
   margin: -0.1037rem 0 0 -0.1037rem;
   z-index: 1;
-  background: #fff;
+  background:green;
   box-shadow: 0 0 0 0.1926rem #0084ff;
 }
 .timeline_item_sp b {
