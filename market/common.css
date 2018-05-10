@@ -201,12 +201,11 @@
         background: white;
         white-space: nowrap;
         top: 28px;
-        /* height: 430px; */
         z-index: 10;
     }
     
     #db-global-nav .top-nav-doubanapp .more-items {
-        padding: 10px 20px 300px;
+        padding: 10px 20px 30px;
         left: -76px;
         width: 211px;
         border-top: none;
