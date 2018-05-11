@@ -522,5 +522,59 @@
         clear: both;
     }
     
+    .slide-box .slide .slide-button-next {
+        right: 0;
+        background: url(https://img3.doubanio.com/f/market/b8f709ab3c33c32e8e07c9ec61578dbf194fdd60/pics/homepage/icon-slides.png) no-repeat -125px 50%;
+    }
+    
+    .slide-box .slide .slide-button-prev {
+        left: 0;
+        background: url(https://img3.doubanio.com/f/market/b8f709ab3c33c32e8e07c9ec61578dbf194fdd60/pics/homepage/icon-slides.png) no-repeat -84px 50%;
+    }
+    
     .slide-box .slide .slide-button-next,
-    .slide-box .slide .slide-button-prev {}
+    .slide-box .slide .slide-button-prev {
+        position: absolute;
+        top: 50%;
+        z-index: 1;
+        width: 41px;
+        height: 69px;
+        margin-top: -35px;
+        text-indent: -9999em;
+        overflow: hidden;
+        outline: 0;
+    }
+    
+    .banner-wrapper .slide-box .slide .slide-paginator {
+        bottom: 10px;
+    }
+    
+    .slide-box .slide .slide-paginator {
+        width: 100%;
+        position: absolute;
+        z-index: 2;
+        left: 0;
+        text-align-last: center;
+    }
+    
+    .banner-wrapper .slide-box .slide .slide-paginator .slide-paginator-item {
+        color: #e3e3e3;
+    }
+    
+    .slide-box .slide .slide-paginator .slide-paginator-item {
+        display: inline;
+        padding: 5px;
+        font-size: 18px;
+        line-height: 20px;
+        cursor: pointer;
+    }
+    
+    .slide-box:after {
+        clear: both;
+    }
+    
+    .slide-box:after,
+    .slide-box:before {
+        display: table;
+        content: "";
+    }
