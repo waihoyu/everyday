@@ -578,3 +578,100 @@
         display: table;
         content: "";
     }
+    
+    .homepage-wrapper {
+        width: 1100px;
+        overflow: hidden;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .product-card-list {
+        margin-bottom: 60px;
+    }
+    
+    .product-card-list .mui-row {
+        margin-left: -12.5px;
+        margin-right: -12.5px;
+    }
+    
+    .mui-row {
+        min-width: 0;
+        clear: both;
+        overflow: hidden;
+    }
+    
+    .mui-col.col-4 {
+        width: 33.33333%;
+    }
+    
+    .mui-col {
+        float: left;
+        box-sizing: border-box;
+        min-width: 0;
+    }
+    
+    .product-card-list .product-card .product-photo {
+        height: 250px;
+        background-position: 50%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-color: #f7f7f7;
+    }
+    
+    .product-card-list .product-card .product-info {
+        overflow: hidden;
+        padding: 20px 15px;
+        position: relative;
+        z-index: 1;
+    }
+    
+    .product-card-list .product-card .product-title {
+        font-size: 18px;
+        color: #4a4a4a;
+        line-height: 1em;
+    }
+    
+    .product-card-list .product-card .product-desc {
+        font-size: 14px;
+        color: #9b9b9b;
+        line-height: 1em;
+        height: 1em;
+        overflow: hidden;
+        margin: 10px 0;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+    
+    .product-card-list .product-card .product-prices {
+        font-family: Arial, Helvetica, system;
+        margin-top: 12px;
+    }
+    
+    .product-card-list .product-card .product-prices {
+        font-size: 20px;
+        color: #f05f50;
+        font-family: Arial;
+        -webkit-font-smoothing: antialiased;
+    }
+    
+    .product-card-list .product-card .product-prices .product-tag {
+        border: 1px solid #f05f50;
+        line-height: 18px;
+        font-size: 13px;
+        padding-left: 9px;
+        padding-right: 9px;
+        border-radius: 4px;
+        position: relative;
+    }
+    
+    .product-card-list .product-card {
+        margin: 0 12.5px;
+        display: block;
+        clear: both;
+        overflow: hidden;
+        background-color: #fff;
+        margin-bottom: 30px;
+        transition: all 0.1s linear;
+        border-radius: 5px;
+    }

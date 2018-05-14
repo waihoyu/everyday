@@ -36,14 +36,14 @@ window.onload = function() {
     let spitem = document.getElementsByClassName('slide-paginator-item');
     spitem[0].style.color = 'red';
 
-    setInterval(() => {
-        console.log(sliderInner[0].style.left + " " + counter);
-        spitem[counter].style.color = 'red';
-        sliderInner[0].style.left = counter++ > 5 ? sliderInner[0].style.left = counter = 0 : parseInt(sliderInner[0].style.left) - 1903 + 'px';
-        // let spitem = document.getElementsByClassName('slide-paginator-item');
-        // counter++;
+    // setInterval(() => {
+    //     console.log(sliderInner[0].style.left + " " + counter);
+    //     spitem[counter].style.color = 'red';
+    //     sliderInner[0].style.left = counter++ > 5 ? sliderInner[0].style.left = counter = 0 : parseInt(sliderInner[0].style.left) - 1903 + 'px';
+    //     // let spitem = document.getElementsByClassName('slide-paginator-item');
+    //     // counter++;
 
-    }, 2000);
+    // }, 2000);
 
 }
 
