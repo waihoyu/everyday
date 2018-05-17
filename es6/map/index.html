@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Maps!</title>
+</head>
+
+<body>
+    <button>Snakes</button>
+    <button>Cry</button>
+    <button>Ice Cream</button>
+    <button>Flamin</button>
+    <button>Dancer</button>
+    <script>
+        // const button = document.getElementsByTagName("button");
+        // for (let i = 0, len = button.length; i < len; i++) {
+        //     let temp = 0;
+        //     button[i].addEventListener("click", function() {
+        //         temp++;
+        //         console.log(`button[${i}]被点击了${temp}次`);
+        //     });
+        // }
+        // 五个按钮，分别统计点按钮的次数
+        // const v = {
+        //     'Snakes': 0,
+        //     'Cry': 0,
+        //     'Ice Cream': 0,
+        //     'Flamin': 0,
+        //     'Dancer': 0
+        // }
+        // window.onload = function() {
+        //     let btns = document.querySelectorAll('button');
+        //     btns.forEach(btn => {
+        //         btn.onclick = function() {
+        //             console.log("button name: " + btn.innerHTML + "==" + "click times " + (v[btn.innerHTML] += 1));
+        //         }
+        //     });
+        //     // for (const btn of btns) {
+        //     //     btn.onclick = function() {
+        //     //         console.log("button name: " + btn.innerHTML + "==" + "click times " + (v[btn.innerHTML] += 1));
+        //     //     }
+        //     // }
+        // }
+
+        const clickCounts = new Map();
+        const buttons = document.querySelectorAll('button');
+        buttons.forEach(btn => {
+            clickCounts.set(btn, 0);
+            btn.addEventListener('click', function() {
+                let val = clickCounts.get(this);
+                clickCounts.set(btn, val + 1);
+                console.log(btn.innerHTML + ":" +
+                    clickCounts.get(this));
+            })
+        })
+    </script>
+</body>
+
+</html>
