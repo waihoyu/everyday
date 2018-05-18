@@ -13,7 +13,20 @@
 </view> -->
 
 <view class="container-out">
-    <view class="circle" wx:for="{{circleList}}" wx:key="index">
+    <view class="circle" wx:for="{{circleList}}" wx:key="index" style="top:{{item.topCircle}}rpx;left:{{item.leftCircle}}rpx;background-color:{{(index % 2 == 0 )? colorCircleFirst:colorCircleSecond}}">
+    </view>
+    <view class="container-in">
+        <view class="content-out" wx:for="{{awardList}}" wx:key="index" style="top:{{item.topAward}}rpx;left:{{item.leftAward}}rpx;background-color:{{(index == indexSelect) ?colorAwardSelect:colorAwardDefault}}">
+            <image class="award-image" src="{{item.imageAward}}" />
+        </view>
+        <view class="start-btn" bindtap="startGame">{{status}}</view>
+    </view>
+</view>
+
+
+
+<!-- <view class="container-out">
+    <view class="circle" wx:for="{{circleList}}" wx:key="index" style="top:{{item.topCircle}}rpx;left:{{item.leftCircle}}rpx;background-color:{{index%2==0?colorCircleFirst:colorCircleSecond}};">
     </view>
     <view class="container-in">
         <view class="content-out" wx:for="{{awardList}}">
@@ -21,4 +34,4 @@
         </view>
         <view class="start-btn" bindtap="startGame">START</view>
     </view>
-</view>
+</view> -->

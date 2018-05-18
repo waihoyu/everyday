@@ -1,4 +1,4 @@
-/**app.wxss**/
+/* *app.wxss*
 
 
 /* .container {
@@ -34,4 +34,54 @@ page {
     border-radius: 50%;
     width: 20rpx;
     height: 20rpx;
+}
+
+.content-out {
+    position: absolute;
+    /* margin: auto;
+    top: 0;
+    left: 0; */
+    /* bottom: 0;
+    right: 0; */
+    height: 150rpx;
+    width: 166.6666rpx;
+}
+
+.container-in1 {
+    position: absolute;
+    height: 150rpx;
+    width: 166.6666rpx;
+    border-radius: 15rpx;
+    background-color: #b136b9;
+    /* box-shadow: 0 5px 0 #d87fde; */
+}
+
+.start-btn {
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    border-radius: 15rpx;
+    height: 150rpx;
+    width: 166.6666rpx;
+    background-color: #ff4400;
+    box-shadow: 0 5px 0 #e7930a;
+    color: black;
+    text-align: center;
+    font-size: 55tpx;
+    font-weight: bold;
+    line-height: 150rpx;
+}
+
+.award-image {
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 130rpx;
+    height: 140rpx;
 }
