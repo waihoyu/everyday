@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <script src="https://unpkg.com/vue@2.5.16/dist/vue.js"></script>
+    <link rel="stylesheet" href="index.css">
 
 </head>
 
@@ -16,6 +17,9 @@
         <h2>{{ greet("X-UA-Compatible") }}</h2>
         <a v-bind:href="website"></a>
         <p v-html="websiteTag"></p>
+        <div id="canvas" v-on:mousemove="getmouseXY">{{x}},{{y}}<span @mousemove.stop>stop moving</span></div>
+        <input type="text" v-model="name">
+        <span>{{name}}</span>
     </div>
     <script src="index.js"></script>
 </body>
