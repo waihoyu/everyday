@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Promise es6 异步当家花旦</title>
+</head>
+
+<body>
+    <script>
+        // http://wesbos.com/wp-json/wp/v2/posts
+        // http://data.ratp.fr/api/datasets/1.0/search/?q=paris
+        console.log("开始了......")
+            // fetch("https://wesbos.com/wp-json/wp/v2/posts").then(function(res) {
+            //     console.log('a');
+            // })
+            // fetch("http://data.ratp.fr/api/datasets/1.0/search/?q=paris").then(function(res) {
+            //         console.log('b');
+            //     })
+            // 等到异步A和异步B,发生之后，再执行
+            // 异步，所以js 的执行顺序就得不到保证。
+            // A B C   promise 
+            // 许下诺言，先好好写代码，找到工作之后一定回来找你。
+            // 对未来会发生的事情
+            //将要耗时的事情，交给promise 吧。
+            //resolve 解决掉  reject 拒绝
+            // 复杂任务调度
+            // const p = new Promise((resolve, reject) => {
+            //     setTimeout(() => {
+            //         console.log('A');
+            //         // 后端处理  数据存储 mysql 读取文件
+            //         // 定时任务
+            //         resolve('A is over!!')
+            //             // reject();
+            //     }, 1000)
+            // });
+            // p.then((res) => {
+            //         console.log('c' + res);
+
+        //     }).catch(e => {
+        //         console.log('不好意思');
+        //     }).then(() => {
+        //         console.log("---")
+        //     })
+        // 两件异步事件，发生不确定的时间  Promise 
+        // const postPromise = fetch('https://wesbos.com/wp-json/wp/v2/posts');
+        const streetCarsPromise = fetch('http://data.ratp.fr/api/datasets/1.0/search/?q=paris');
+        // postPromise.then()
+        //js 不会为异步停留
+        // 强制代码的执行顺序，同步执行postPromise, 
+        //最晚的那个执行完，A B  结果 再执行C
+
+        Promise.all([streetCarsPromise]).then(reponses => {
+            return Promise.all(reponses.map(res => res.json()))
+                // console.log(reponses);
+        }).then(response => {
+            console.log(response);
+        })
+    </script>
+</body>
+
+</html>

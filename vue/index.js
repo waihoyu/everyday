@@ -14,6 +14,7 @@ new Vue({
         getmouseXY: function(e) {
             this.x = e.offsetX;
             this.y = e.offsetY;
-        }
+        },
+        
     }
 });
