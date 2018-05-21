@@ -39,7 +39,6 @@ let util = {
                     resolve(res.data);
                 },
                 fail(err) {
-                    console.log('***1*');
                     reject(err);
                 }
             })
@@ -48,3 +47,4 @@ let util = {
 }
 
 export default util
+
