@@ -12,14 +12,33 @@
 </head>
 
 <body>
-    <div id="app">
-        <h2>{{name}}</h2>
-        <h2>{{ greet("X-UA-Compatible") }}</h2>
-        <a v-bind:href="website"></a>
-        <p v-html="websiteTag"></p>
-        <div id="canvas" v-on:mousemove="getmouseXY">{{x}},{{y}}<span @mousemove.stop>stop moving</span></div>
-        <input type="text" v-model="name">
-        <span>{{name}}</span>
+    <div id="vue-app-one">
+        <greeting></greeting>
+        <!-- 图片 -->
+        <div id="bag" v-bind:class="{burst:ended}"></div>
+        <!-- 进度情况 -->
+        <div id="bag-health">
+            <div v-bind:style="{width:health + '%'}"></div>
+        </div>
+        <!-- 控制按钮 -->
+        <div id="controls">
+            <button v-on:click="punch" v-show="!ended">使劲敲</button>
+            <button v-on:click="restart">重新开始</button>
+        </div>
+    </div>
+
+    <div id="vue-app-two">
+        <!-- 图片 -->
+        <div id="bag" v-bind:class="{burst:ended}"></div>
+        <!-- 进度情况 -->
+        <div id="bag-health">
+            <div v-bind:style="{width:health + '%'}"></div>
+        </div>
+        <!-- 控制按钮 -->
+        <div id="controls">
+            <button v-on:click="punch" v-show="!ended">使劲敲</button>
+            <button v-on:click="restart">重新开始</button>
+        </div>
     </div>
     <script src="index.js"></script>
 </body>
