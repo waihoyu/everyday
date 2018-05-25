@@ -36,6 +36,8 @@
         let numElement = document.getElementById("number");
         let atcElement = document.getElementById("addToCart");
         let choElement = document.getElementById("choose");
+        let choNumElement = document.getElementById("chooseNumber");
+        let choColElement = document.getElementById("chooseColor");
         let numValue = numElement.value;
         let selColor = 'red';
         if (parseInt(numValue) <= 0) {
@@ -46,16 +48,17 @@
         });
         choElement.addEventListener("change", function(e) {
             selColor = this.value;
-            document.getElementById("chooseColor").innerHTML = this.options[this.selectedIndex].innerHTML;
-            document.getElementById("chooseColor").style.color = this.value;
+            choColElement.innerHTML = this.options[this.selectedIndex].innerHTML;
+            choColElement.style.color = this.value;
         });
         numElement.addEventListener("keyup", function(e) {
-            if ((parseInt(this.value) > parseInt(phoneStocks[selColor])) || (parseInt(this.value) <= 0)) {
+            this.value = (this.value === "" ? 0 : parseInt(this.value));
+            if (((this.value) > parseInt(phoneStocks[selColor])) || ((this.value) <= 0)) {
                 atcElement.disabled = "disabled";
-                document.getElementById("chooseNumber").innerHTML = "库存不足或数量不能为0";
+                choNumElement.innerHTML = "库存不足或数量不能为0";
             } else {
                 atcElement.disabled = "";
-                document.getElementById("chooseNumber").innerHTML = parseInt(this.value);
+                choNumElement.innerHTML = (this.value);
             }
         });
     </script>
