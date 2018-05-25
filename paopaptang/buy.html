@@ -11,6 +11,7 @@
 <body>
     <label>选择颜色</label>
     <select id="choose">
+        <option value ="">选择颜色</option>
         <option value ="red">红色</option>
         <option value ="blue">蓝色</option>
         <option value="yellow">黄色</option>
@@ -21,7 +22,7 @@
         <input id="number" value="0" />
     </p>
     <p>
-        <p><label for="">你选择的颜色为：</label><span id="chooseColor" style="color:red">红色</span></p>
+        <p><label for="">你选择的颜色为：</label><span id="chooseColor"></span></p>
         <p><label for="">你选择的数量为：</label><span id="chooseNumber">0</span></p>
     </p>
     <input type="button" value="加入购物车" id="addToCart">
@@ -39,20 +40,40 @@
         let choNumElement = document.getElementById("chooseNumber");
         let choColElement = document.getElementById("chooseColor");
         let numValue = numElement.value;
-        let selColor = 'red';
-        if (parseInt(numValue) <= 0) {
+        let selColor = '';
+        choNumElement.innerHTML = "";
+        if (parseInt(numValue) <= 0 || selColor === "") {
             atcElement.disabled = "disabled";
         }
         addToCart.addEventListener("click", function(e) {
-            alert("加入购物车成功");
-        });
+            if ((numValue < 0) || (selColor === "")) {
+                alert("请录入数量或选择颜色");
+            } else {
+                alert("加入购物车成功");
+            }
+
+        }, false);
         choElement.addEventListener("change", function(e) {
             selColor = this.value;
-            choColElement.innerHTML = this.options[this.selectedIndex].innerHTML;
-            choColElement.style.color = this.value;
-        });
-        numElement.addEventListener("keyup", function(e) {
+            numElement.value = 0;
+            choNumElement.innerHTML = "";
+            choColElement.innerHTML = "";
+            if (selColor != "") {
+                choColElement.innerHTML = this.options[this.selectedIndex].innerHTML;
+                choColElement.style.color = this.value;
+                atcElement.disabled = "";
+            } else {
+                atcElement.disabled = "disabled";
+            }
+        }, false);
+        numElement.addEventListener("input", function(e) {
             this.value = (this.value === "" ? 0 : parseInt(this.value));
+            this.value = (this.value === "NaN" ? 0 : parseInt(this.value));
+            if ((selColor === "")) {
+                atcElement.disabled = "disabled";
+                choNumElement.innerHTML = (this.value);
+                return;
+            }
             if (((this.value) > parseInt(phoneStocks[selColor])) || ((this.value) <= 0)) {
                 atcElement.disabled = "disabled";
                 choNumElement.innerHTML = "库存不足或数量不能为0";
