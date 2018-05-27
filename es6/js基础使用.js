@@ -1,5 +1,6 @@
 /**
  * js 的基础使用
+ *vscode ide 真的很好用呢
  */
 // 四种for循环
 // let data = { name: "Jim", age: 20 };
