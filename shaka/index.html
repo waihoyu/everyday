@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- 1 页面要出来
+    rem script  适配所有设备。
+    3个 手机图片 + animation
+    loading none, block  定位
+    摇出来的人， dom 
+    结构+ 样式写在开始的地方 
+    写完了之后， 隐藏
+    
+    2 js
+    摇一摇api 
+    loading 出来， 
+    setTimeout  
+    动态的 位置translateY
+    
+    3 操作好声音  -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>摇一摇</title>
+    <link rel="stylesheet" href="index.css">
+    <script>
+        // 所有css之前，我们先来决定htmlfont-size应该为 1rem=设备宽度/10
+        // 适配问题 不同的手机1rem 单位是 宽度10分之1
+        // 1rem = html fontsize
+        let wid = (function(w) {
+            // window 是js 全局 dom document 只是其中一部分
+            // 导航location.href　  navigator lbs 经纬度
+            // 陀螺仪 储存localstorage
+            let s = w.document;
+            // 找到html元素
+            let r = s.documentElement;
+            // 宽度的十分之一
+            let colWidth = r.clientWidth / 10; /*面试常考*/
+            console.log(colWidth);
+            r.style.fontSize = colWidth + 'px';
+            return colWidth;
+        })(window);
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="shake-hd">
+            <img src="./assets/11.png" alt="" class="shake-hd__img">
+        </div>
+    </div>
+    <div>
+        <audio id='audioPlay' src='./assets/shake_sound_male.mp3' hidden='true'>
+    </div>
+    <script type="text/javascript">
+        //运动事件监听
+        if (window.DeviceMotionEvent) {
+            window.addEventListener('devicemotion', deviceMotionHandler, false);
+        }
+
+        //获取加速度信息
+        //通过监听上一步获取到的x, y, z 值在一定时间范围内的变化率，进行设备是否有进行晃动的判断。
+        //而为了防止正常移动的误判，需要给该变化率设置一个合适的临界值。
+        var SHAKE_THRESHOLD = 4000;
+        var last_update = 0;
+        var x, y, z, last_x = 0,
+            last_y = 0,
+            last_z = 0;
+
+        // function bf() {
+        //     var audio = document.getElementById('audioPlay');
+        //     if (audio !== null) {
+        //         //检测播放是否已暂停.audio.paused 在播放器播放时返回false.
+        //         alert(audio.paused);
+        //         if (audio.paused) {
+        //             audio.play(); //audio.play();// 这个就是播放  
+        //         } else {
+        //             audio.pause(); // 这个就是暂停
+        //         }
+        //     }
+        // }
+        // bf();
+
+        function deviceMotionHandler(eventData) {
+            // var strAudio = "<audio id='audioPlay' src='./assets/shake_sound_male.mp3' hidden='true'>";
+            //     let bd = document.getElementsByTagName("body");
+            //     var newGraf = document.createElement("p");
+            //     let newText = document.createTextNode(strAudio);
+            //     newGraf.appendChild(newText);
+                // var audio = document.getElementById("audioPlay");
+              
+            var acceleration = eventData.accelerationIncludingGravity;
+            var curTime = new Date().getTime();
+            if ((curTime - last_update) > 10) {
+                var diffTime = curTime - last_update;
+                last_update = curTime;
+                x = acceleration.x;
+                y = acceleration.y;
+                z = acceleration.z;                               
+                var speed = Math.abs(x + y + z - last_x - last_y - last_z) / diffTime * 10000;
+                if (speed > SHAKE_THRESHOLD) {
+                    var audio = document.getElementById('audioPlay');
+                //浏览器支持 audion
+                console.log(audio)
+                setTimeout(function(){
+                    audio.play();
+                    // document.getElementById("result").className = 'result result-show';
+                    // document.getElementById("loading").className = 'loading';                    
+                }, 1000); 
+                    alert("你中奖啦！"); // Do something
+                }
+                last_x = x;
+                last_y = y;
+                last_z = z;
+            }
+        }
+    </script>
+</body>
+
+</html>

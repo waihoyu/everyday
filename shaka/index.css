@@ -1,0 +1,97 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+html {
+    height: 100%;
+    overflow: hidden;
+    background: #292D2E;
+}
+
+.container {
+    height: 100%;
+    background: #292D2E;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.shake-hd {
+    height: 100%;
+    top: 100px;
+    left: 100px;
+    position: absolute;
+    text-align: center;
+    background: #292D2E;
+    /* transform-origin: 100% 50%; */
+    animation: shake 3s infinite;
+    -webkit-animation: shake 2s infinite;
+}
+
+.shake-hd__img {
+    /* background: #292D2E; */
+    /*Safari and Chrome*/
+}
+
+@keyframes shake {
+    0% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(10deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes shake1 {
+    0%,
+    100%,
+    20%,
+    50%,
+    80% {
+        transition-timing-function: cubic-bezier(0.215, .61, .355, 1);
+        /*贝塞尔曲线 ： X1 Y1 X2 Y2*/
+        transform: translate3d(0, 0, 0);
+        /*设置只在Z轴上移动*/
+    }
+    40%,
+    43% {
+        transition-timing-function: cubic-bezier(0.755, 0.50, 0.855, 0.060);
+        transform: translate3d(0, -30px, 0);
+    }
+    70% {
+        transition-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+        transform: translate3d(0, -15px, 0);
+    }
+    90% {
+        transform: translate3d(0, -4px, 0);
+    }
+}
+
+@-webkit-keyframes shake1 {
+    0%,
+    100%,
+    20%,
+    50%,
+    80% {
+        transition-timing-function: cubic-bezier(0.215, .61, .355, 1);
+        /*贝塞尔曲线 ： X1 Y1 X2 Y2*/
+        transform: translate3d(0, 0, 0);
+        /*设置只在Z轴上移动*/
+    }
+    40%,
+    43% {
+        transition-timing-function: cubic-bezier(0.755, 0.50, 0.855, 0.060);
+        transform: translate3d(0, -30px, 0);
+    }
+    70% {
+        transition-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+        transform: translate3d(0, -15px, 0);
+    }
+    90% {
+        transform: translate3d(0, -4px, 0);
+    }
+}
