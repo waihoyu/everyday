@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>表单验证</title>
+</head>
+
+<body>
+    <form action="http://xxx.com/register" id="registerForm" method="post">
+        <div class="field">
+            请输入用户名：<input type="text" name="userName" />
+        </div>
+        <div class="field">
+            请输入密码：<input type="password" name="password" />
+        </div>
+        <div class="field">
+            请输入手机号码：<input type="tel" name="phoneNumber" />
+        </div>
+        <button>提交</button>
+    </form>
+
+    <script>
+        function isEmpty(str) {
+            if (str && str.trim().length > 0) {
+                return false;
+            }
+            return true;
+        }
+        const registerForm = document.getElementById('registerForm');
+        registerForm.onsubmit = function() {
+            const userName = registerForm.userName.value.trim();
+
+            if (isEmpty(userName)) {
+                alert('用户名不能为空');
+                return false;
+            }
+            // 密码长度不少于6位
+            if (registerForm.password.value.length < 6) {
+                alert('密码长度不能少于6位');
+                return false;
+            }
+            const phoneNumber = registerForm.phoneNumber.value.trim();
+            if (isEmpty(phoneNumber)) {
+                alert('请输入手机号');
+                return false;
+            }
+
+            if (!/^1[3456789][0-9]{9}$/.test(
+                    registerForm.phoneNumber.value
+                )) {
+                alert('手机格式有误');
+                return false;
+            }
+            return true;
+        }
+    </script>
+</body>
+
+</html>
