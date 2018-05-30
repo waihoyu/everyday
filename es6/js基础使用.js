@@ -28,7 +28,5 @@ let a = 0;
  * @param {any} b 
  * @param {any} c 
  */
-
-function a(b, c) {
-    return
-}
+console.table("dd");
+console.dir(document)
