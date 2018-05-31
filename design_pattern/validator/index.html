@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>表单验证</title>
+    <script src="validator.js"></script>
+</head>
+
+<body>
+    <form action="http://xxx.com/register" id="registerForm" method="post">
+        <div class="field">
+            请输入用户名：<input type="text" name="userName" />
+        </div>
+        <div class="field">
+            请输入密码：<input type="password" name="password" />
+        </div>
+        <div class="field">
+            请输入手机号码：<input type="tel" name="phoneNumber" />
+        </div>
+        <button>提交</button>
+    </form>
+    <script>
+        function isEmpty(str) {
+            if (str && str.trim().length > 0) {
+                return false;
+            }
+            return true;
+        }
+        const registerForm = document.getElementById('registerForm');
+        registerForm.onsubmit = function() {
+            // const userName = registerForm.userName.value.trim();
+            // const userNameResult = strategies.isNonEmpty(userName, "用户名不能为空@");
+            // if (!userNameResult.status) {
+            //     alert(userNameResult.msg);
+            //     return false;
+            // }
+            // // 密码长度不少于6位
+            // if (registerForm.password.value.length <
+            //     6) {
+            //     alert('密码长度不能少于6位');
+            //     return false;
+            // }
+            // const phoneNumber = registerForm.phoneNumber.value.trim();
+            // const phoneNumberResult = strategies.isNonEmpty(phoneNumber, "手机号不能为空!");
+            // if (!phoneNumberResult.status) {
+            //     alert(phoneNumberResult.msg);
+            //     return false;
+            // }
+            // if (!/^1[3456789][0-9]{9}$/.test(
+            //         registerForm.phoneNumber.value
+            //     )) {
+            //     alert('手机格式有误');
+            //     return false;
+            // }
+            var erroMsg = validatorFunc();
+            if (erroMsg) {
+                console.log(erroMsg)
+                return false;
+            }
+            return true;
+        }
+
+        function validatorFunc2() {
+            const userNameResult = strategies.isNonEmpty(registerForm.userName.value, '用户名不能为空');
+            if (userNameResult) {
+                return userNameResult;
+            }
+            const passwordResult = strategies.minLength(registerForm.password.value, 6, '密码不少于6位');
+            if (passwordResult) {
+                return passwordResult;
+            }
+            const phoneNumberResult = strategies.isMobilePhone(registerForm.phoneNumber.value, '手机格式有误');
+            if (phoneNumberResult) {
+                return phoneNumberResult;
+            }
+            return strategies.isEmpty();
+        }
+        // 编程能力贵在抽象
+        /* 
+          具体的表单验证 -> strategies 集合了 验证逻辑（抽象的去写验证） 
+          抽象 validateFunc 具象的代码 （
+          用户名不能为空
+          什么元素 什么规则 做什么验证
+          有很多的不确定的数量表单元素及规则，要去验证
+          中介者模式， 门清 内存，颜色，品牌，交给中介者对象，
+          轻松很多
+          要一个验证对象。专业的 将要验证的元素交给它，
+          验证的过程，抽象,
+          将要验证 元素  给我的对象，
+        */
+
+        function validatorFunc() {
+            var validator = new Validator();
+            validator.add(registerForm.userName, 'isNonEmpty', "用户名不能为空!!!");
+            validator.add(registerForm.password, 'minLength:6', "密码不能小于6位!!!");
+            validator.add(registerForm.phoneNumber, 'isMobilePhone', "手机格式有误!!!");
+            var errorMsg = validator.start();
+            return errorMsg;
+        }
+    </script>
+</body>
+
+</html>
