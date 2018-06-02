@@ -53,14 +53,16 @@ extend(Author, Person);
 
 function extend(subClass, superClass) {
     // 第三者
-    let F = function() {}; // 空的构造函数
+    let F = function() { this.na = "test" }; // 空的构造函数
     F.prototype = superClass.prototype;
     subClass.prototype = new F();
+    console.log(subClass.prototype.prototype);
     subClass.prototype.constructor = subClass;
+    console.log(subClass.prototype);
 }
 
 let test = new Author('雨果', ['悲惨世界']);
-test.getName1();
+// test.getName1();
 
 // Author.prototype = {}
 
