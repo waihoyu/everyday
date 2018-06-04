@@ -1,0 +1,14 @@
+<template>
+  <view></view>
+</template>  
+<script>
+import wepy from 'wepy';
+//单页面组件
+export default class Home extends wepy.page {
+  //不是json  是es6 class
+  data = {};
+}
+</script>  
+<style lang = "">
+</style >
+

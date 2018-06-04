@@ -6,10 +6,16 @@
  * @Description:     
  */
 
+// let a = () => {
 
-let a = () => {
+//     console.log("箭头函数");
+// }
 
-    console.log("箭头函数");
+// a();
+
+console.log(d);
+console.log(f);
+var d = function() {
+    console.log("00");
 }
-
-a();
+var f = 100;
