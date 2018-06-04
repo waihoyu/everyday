@@ -1,0 +1,15 @@
+{
+	"description": "wepy",
+	"setting": {
+		"urlCheck": true,
+		"es6": false,
+		"postcss": false,
+		"minified": false,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"appid": "wx2d672766af7a0dce",
+	"projectname": "mall",
+	"miniprogramRoot": "./dist",
+	"condition": {}
+}
