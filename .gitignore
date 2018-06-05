@@ -1,6 +1,7 @@
 .DS_Store
 node_modules/
 vue_mall/node_modules/
+mall/node_modules/
 dist/
 npm-debug.log*
 yarn-debug.log*

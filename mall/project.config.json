@@ -1,32 +1,15 @@
 {
-	"description": "项目配置文件。",
+	"description": "A WePY project",
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": false,
-		"postcss": true,
-		"minified": true,
+		"postcss": false,
+		"minified": false,
 		"newFeature": true
 	},
-	"miniprogramRoot": "./dist/",
 	"compileType": "miniprogram",
 	"appid": "wx2d672766af7a0dce",
 	"projectname": "mall",
-	"condition": {
-		"search": {
-			"current": -1,
-			"list": []
-		},
-		"conversation": {
-			"current": -1,
-			"list": []
-		},
-		"game": {
-			"currentL": -1,
-			"list": []
-		},
-		"miniprogram": {
-			"current": -1,
-			"list": []
-		}
-	}
+	"miniprogramRoot": "./dist",
+	"condition": {}
 }

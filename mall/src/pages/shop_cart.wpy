@@ -1,13 +1,18 @@
 <template>
-    <view></view>
+  <view>
+  </view>
 </template>
 <script>
-import wepy from 'wepy';
-//单页面组件
-export default class Shop_cart extends wepy.page {
-  //不是json  是es6 class
-  data = {};
-}
+  // wepy 在本地的node_modules 下
+  import wepy from 'wepy'
+  // 单页面组件
+  export default class ShopCart extends wepy.page {
+    // 不是json , es6 class 
+    data = {
+    }
+  }
+
 </script>
-<style lang="">
+<style lang="less">
+
 </style>
