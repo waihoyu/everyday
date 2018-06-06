@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .container {
+            height: 100%;
+            width: 100%;
+        }
+        
+        .left,
+        .right,
+        .center {
+            height: 200px;
+            /* width: 180px; */
+        }
+        
+        .left {
+            background: pink;
+            float: left;
+            width: 180px;
+            /* height: 200px; */
+        }
+        
+        .right {
+            background: lightblue;
+            width: 180px;
+            float: right;
+            /* height: 200px; */
+        }
+        
+        .center {
+            background: yellow;
+            overflow: hidden;
+            /* height: 200px; */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 三栏式布局 BFC-->
+    <div class="container">
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="center"></div>
+    </div>
+</body>
+
+</html>
