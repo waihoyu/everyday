@@ -5,25 +5,44 @@
     -->
     <!-- 暂无数据的提示 -->
     <!-- 幻灯片 -->
+    <!-- <bottomLoadMore :message='mes' :show.sync='showLoading'></bottomLoadMore> -->
+
     <discover></discover>
-    <bottomLoadMore></bottomLoadMore>
+
+    <bottomLoadMore :message='mes' :show.sync="showLoading"></bottomLoadMore>
     <placeholder></placeholder>
     <bombscreen></bombscreen>
   </view>
 </template>
+
+
 <script>
 // wepy 在本地的node_modules 下
 import wepy from 'wepy';
 //将页面换一个视角（切页面），组件化视角（粗，大体）
 import Bombscreen from '@/components/bomb_screen';
+import Placeholder from '@/components/placeholder';
+import BottomLoadMore from '@/components/bottomLoadMore';
+import Discover from '@/components/discover';
+
 // 单页面组件
 export default class Home extends wepy.page {
   // 不是json , es6 class
-  data = {};
+  data = {
+    showLoading: true,
+    mes: '加载更多。。。'
+  };
+  onLoad() {
+    this.showLoading = true;
+  }
+  props = {};
   //页面的组件构成  多人协作，将复杂度细化，
   //可读性更强
-  component = {
-    bombscreen: Bombscreen
+  components = {
+    bombscreen: Bombscreen,
+    placeholder: Placeholder,
+    bottomLoadMore: BottomLoadMore,
+    discover: Discover
   };
 }
 </script>

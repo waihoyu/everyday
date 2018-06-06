@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        p {
+            color: red;
+            background: #ffcccc;
+            width: 200px;
+            line-height: 100px;
+            text-align: center;
+            margin: 100px;
+        }
+        
+        .wrap {
+            overflow: hidden;
+        }
+        
+        .wrap p {
+            margin-top: 150px;
+            /* overflow: hidden; */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- bfc block formatting context 块级格式化上下文 -->
+    <p>廖总真有钱</p>
+    <!-- 原来两个p,都在跟body下，相同的上下文环境bfc
+        wrap  并没有能力创建bfc
+        1.根元素会创建一个bfc环境
+     文档  块 block  页在上占位置
+     新的bfc overflow:hidden(不为visisble)新的空间
+     告诉浏览器，外面的环境影响不到我了，我重新进行了block formating 布局和定位
+     核心是，新的bfc，给出了新的不受外界影响的块级格式化环境
+
+     定位  position
+
+     
+     广义的定位  块级 垂直  行内元素 左右 内容
+float 在一行的左边或一行的右边
+flex position
+     bfc  重建一个上下文环境
+     BFC的约束规则
+     同一个BFC的两个相邻的Box的margin会重叠，与方向无关
+     破坏规则，新的bfc context 上下文的概念
+
+     如何创建bfc  重新划一块渲染区域（独立）
+     块级（页面的基础box） 格式化（渲染）
+     根元素 天然是一个bfc
+     overflow hidden  
+    -->
+    <div class="wrap">
+        <p>发哥女朋友真漂亮</p>
+    </div>
+</body>
+
+</html>
