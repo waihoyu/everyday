@@ -57,7 +57,16 @@ flex position
      如何创建bfc  重新划一块渲染区域（独立）
      块级（页面的基础box） 格式化（渲染）
      根元素 天然是一个bfc
-     overflow hidden  
+     overflow hidden 是一个bfc
+     float 不为none
+     display inline-block  table-cell  table-caption
+     position absolute fixed 只要不为static     
+     overflow hidden          
+    -->
+    <!-- 自适应的两栏式布局
+    float 离开了文档流  aside main 同一个bfc 下面 跟元素
+    bfc 布局规则第3条 每个元素的左边，要与包含box的左边相接触
+    bfc 布局规则第四条  bfc的区域不会与float box 重叠 
     -->
     <div class="wrap">
         <p>发哥女朋友真漂亮</p>

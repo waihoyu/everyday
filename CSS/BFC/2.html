@@ -15,6 +15,7 @@
         .par {
             border: 5px solid #fcc;
             width: 300px;
+            overflow: hidden;
         }
         
         .child {
@@ -27,7 +28,9 @@
 </head>
 
 <body>
-    <!-- 网页的定位（大）文档流正常，浮动，定位 flex  table浮动之后离开了文档流 -->
+    <!-- 网页的定位（大）文档流正常，浮动，定位 flex  table浮动之后离开了文档流 
+    规则：bfc的高度，浮动元素也参与计算
+    -->
     <div class="par">
         <div class="child"></div>
         <div class="child"></div>
