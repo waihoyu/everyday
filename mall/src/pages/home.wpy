@@ -1,18 +1,31 @@
 <template>
   <view>
+    <!-- 小程序 
+    自定义的html标签，组件将一组功能封装到一个component里面，前且在页面上可以用自定义标签的形式引入。
+    -->
+    <!-- 暂无数据的提示 -->
+    <!-- 幻灯片 -->
+    <discover></discover>
+    <bottomLoadMore></bottomLoadMore>
+    <placeholder></placeholder>
+    <bombscreen></bombscreen>
   </view>
 </template>
 <script>
-  // wepy 在本地的node_modules 下
-  import wepy from 'wepy'
-  // 单页面组件
-  export default class Home extends wepy.page {
-    // 不是json , es6 class 
-    data = {
-    }
-  }
-
+// wepy 在本地的node_modules 下
+import wepy from 'wepy';
+//将页面换一个视角（切页面），组件化视角（粗，大体）
+import Bombscreen from '@/components/bomb_screen';
+// 单页面组件
+export default class Home extends wepy.page {
+  // 不是json , es6 class
+  data = {};
+  //页面的组件构成  多人协作，将复杂度细化，
+  //可读性更强
+  component = {
+    bombscreen: Bombscreen
+  };
+}
 </script>
 <style lang="less">
-
 </style>
