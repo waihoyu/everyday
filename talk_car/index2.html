@@ -1,36 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
+        h5 {
+            margin: 0;
+        }
+
         .main {
             position: relative;
             width: 200px;
             height: 200px;
             border: 2px solid;
+            box-sizing: border-box;
         }
-        
+
         h3 {
             border: 2px solid;
+            box-sizing: border-box;
         }
-        
+
         .box {
             border: 2px solid;
-            /* position: relative; */
-            /* width: 50px; */
-            /* height: 50px; */
+            box-sizing: border-box;
+            position: relative;
+            padding: 20px 0 20px 75px;
+            height: 100px;
         }
-        
+
         a {
-            /* position: absolute; */
-            display: block;
-            width: 50px;
-            height: 50px;
-            border: 2px solid red;
-            /* overflow: hidden; */
+            position: absolute;
+            border: 2px solid green;
+            box-sizing: border-box;
+            width: 64px;
+            height: 64px;
+            margin-left: 2px;
+            left: 0;
+            top: 20px;
+            width: 60px;
+            height: 60px;
+        }
+
+        img {
+            top: 0;
+            /* text-align: center; */
+            /* vertical-align: middle; */
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+        }
+
+        h5 {
+            margin-bottom: 10px;
+            padding-top: 5px;
+            font-weight: bold;
+            border: 2px solid blue;
+        }
+
+        h5 em {
+            font-size: 8px;
+        }
+
+        .indicator {
+            position: relative;
+            width: 100px;
+            height: 5px;
+            background: #e1e1e1;
+            border-radius: 8px;
+            font-size: 0;
+            line-height: 0;
+        }
+
+        .jp-play-bar {
+            position: absolute;
+            height: 5px;
+            background: red;
+            width: 40px;
         }
     </style>
 </head>
@@ -39,9 +88,18 @@
     <div class="main">
         <h3>语音说车</h3>
         <div class="box">
-            <a href=""></a>
+            <a href="">
+                <span>
+                        <img src="http://image.bitautoimg.com/Audio/2016/5/23/2016523162224169.jpg" />
+                </span>
+            </a>
+            <h5>崔珺
+                <em>车主之友主编</em>
+            </h5>
+            <div class="indicator">
+                <span class="data jp-play-bar"></span>
+            </div>
         </div>
-
     </div>
 </body>
 
