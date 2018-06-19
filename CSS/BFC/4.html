@@ -7,36 +7,48 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            border: 2px solid black;
+            box-sizing: border-box;
+        }
+
         .container {
             height: 100%;
             width: 100%;
         }
-        
+
         .left,
         .right,
         .center {
-            height: 200px;
-            /* width: 180px; */
+            height: 400px;
         }
-        
+
         .left {
             background: pink;
             float: left;
             width: 180px;
             /* height: 200px; */
         }
-        
+
         .right {
             background: lightblue;
             width: 180px;
             float: right;
-            /* height: 200px; */
         }
-        
+
         .center {
             background: yellow;
             overflow: hidden;
-            /* height: 200px; */
+            /* display: flex; */
+        }
+
+        .child {
+            float: left;
+            width: 25%;
+            height: 50%;
+            background: blue;
         }
     </style>
 </head>
@@ -46,8 +58,16 @@
     <div class="container">
         <div class="left"></div>
         <div class="right"></div>
-        <div class="center"></div>
-    </div>
+        <div class="center">
+            <!-- <div class="center">
+                    <div class="child"></div>
+                    <div class="child"></div>
+                    <div class="child"></div>
+                    <div class="child"></div>
+                    <div class="child"></div>
+                </div> -->
+        </div>
+
 </body>
 
 </html>

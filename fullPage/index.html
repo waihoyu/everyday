@@ -7,19 +7,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="1.css">
-    <script src="utils.js"></script>
-    <script src="1.js"></script>
-    <script>
-        let pages = document.getElementsByClassName("page");
-        // console.log(pages);
-        new PUreFullPage({
-            pages
-        })
-    </script>
 </head>
 
 <body>
-    <div class="container" id="pureFullPage">
+    <div class="container" id='pureFullPage'>
         <div class="page">
             <div class="box">
                 <h2>Page1</h2>
@@ -27,15 +18,23 @@
         </div>
         <div class="page">
             <div class="box">
-                <h2>Page1</h2>
+                <h2>Page2</h2>
             </div>
         </div>
         <div class="page">
             <div class="box">
-                <h2>Page1</h2>
+                <h2>Page3</h2>
             </div>
         </div>
     </div>
+    <script src="utils.js"></script>
+    <script src="common.js"></script>
+    <script>
+        let pages = document.getElementsByClassName("page");
+        let pagess = document.getElementById('pureFullPage');
+        console.log(pagess);
+        new PureFullPage({})
+    </script>
 </body>
 
 </html>
