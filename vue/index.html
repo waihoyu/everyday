@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="root">
+    </div>
+    <script src="https://cdn.bootcss.com/vue/2.5.16/vue.min.js"></script>
+    <script>
+        //页面是什么呢？ DOM  html -> jquery 对原生api 进行封装
+        // 组件式开发  不做DOM
+        //el  component  组件式开发  每个页面有很多的组件构成
+        // template 用自定义标签方式  mount  挂载  也是vue的生命周期函数
+        // 是这能挂载到body上了吗？
+        //vue好像可以接管一切
+        //vue 用mvvm 思维接管一切
+        new Vue({
+            el: '#root',
+            template: `
+            <ul class="r-swiper-out">
+                <li class="r-swiper-out-item" :style="itemStyle">
+                  <div class="r-swiper-out-item-content"
+                  @touchstart="touchstart"
+                  @touchmove="touchmove"
+                  @touchend="touchend"
+                  >
+                    分手的我们
+                  </div>
+                 <div class="r-swiper-out-item-btns" ref="btns">
+                    <div class="r-swiper-out-item-btn">
+                    删除
+                    </div>
+                 </div>
+                </li>
+            </ul>
+             `,
+            data: {
+                translateX: 0,
+                speed: 300,
+                oldPoint: null,
+                startX: 0,
+                btnsWidth: 0
+            },
+            computed: {
+                itemStyle() {
+                    return {
+                        transform: `translate3d(${this.translateX}px,0,0)`,
+                        transition: `all ${this.speed}ms`
+                    }
+                }
+            },
+            methods: {
+                touchstart(e) {
+                    this.oldPoint = e.touches[0];
+                    this.speed = 0;
+                    this.startX = this.translateX;
+                    console.log("touchstart");
+                },
+                touchmove(e) {
+                    let moveX = e.touches[0].pageX - this.oldPoint.pageX;
+                    let moveY = e.touches[0].pageY - this.oldPoint.pageY;
+                    //左滑  负值  右划  正值
+                    if (Math.abs(moveX) < Math.abs(moveY) || Math.abs(moveX) < 20 || Math.abs(moveY) > 30)
+                        return;
+                    e.preventDefault();
+                    //startX 会存着translateX
+                    moveX = this.startX * 1 + moveX * 1;
+                    if (moveX < -this.btnsWidth) {
+                        moveX = -this.btnsWidth
+                    } else {
+                        moveX = 0
+                    }
+                    this.translateX = moveX;
+                    console.log("touchmove");
+                },
+                touchend(e) {
+                    let moveX = -this.translateX > 30 ? -this.btnsWidth : 0;
+                    this.speed = 300;
+                    this.translateX = moveX;
+                    console.log("touchend");
+                },
+            },
+            created() {
+                // console.log(this.$refs.btns.offsetWidth);
+            },
+            //生命周期函数 css?  ele.offsetwidth  挂载到页面上
+            //el template 
+            mounted() {
+                console.log(this.$refs.btns.offsetWidth);
+                this.btnsWidth = this.$refs.btns.offsetWidth;
+            }
+        })
+    </script>
+</body>
+
+</html>
