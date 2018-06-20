@@ -9,7 +9,60 @@
 </head>
 
 <body>
-
+    <!-- 
+    vue 是mvvm
+    data-binding
+    template compile    
+    支持对{{}}解析， template compile
+    -->
+    <!-- 1 打坑  2 填值 -->
+    <div id="app">
+        <h3>姓名</h3>
+        <p>我的名字是{{name}}</p>
+        <h3>年龄</h3>
+        <p>{{age}}</p>
+        <h3>信息</h3>
+        <div class="wei">
+            <p>{{msg}}</p>
+        </div>
+    </div>
+    <script>
+        class Vue {
+            constructor(opt) {
+                this.opt = opt;
+                this.root = document.querySelector(this.opt.el);
+                this.compile(this.root);
+            }
+            compile(node) {
+                // 遍历结点，文本结点
+                // console.log(node.childNodes);
+                [].forEach.call(node.childNodes, child => {
+                    // console.log(child);
+                    //只有{{}}才需要去做，正则
+                    console.log(child.innerHTML);
+                    if (!child.firstElementChild && /\{\{(.*)\}\}/.test(child.innerHTML)) {
+                        // child.innerHTML = this.opt.data.name;
+                        // console.log(RegExp.$1, RegExp.$2);
+                        let key = RegExp.$1.trim();
+                        child.innerHTML = child.innerHTML.replace(/\{\{(.*)\}\}/, this.opt.data[key]);
+                        // RegExp.replace(child.innerHTML, this.opt.data[key]);
+                    } else if (child.firstElementChild)
+                        this.compile(child)
+                })
+            }
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+            let options = {
+                el: '#app',
+                data: {
+                    name: "检索中.....",
+                    age: 30,
+                    msg: 'vue 高手，月薪5万'
+                }
+            }
+            new Vue(options);
+        });
+    </script>
 </body>
 
 </html>
