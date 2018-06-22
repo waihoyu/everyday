@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>滑动方向判断</title>
+
+    <style>
+        * {
+            margin: 0;
+            left: 0;
+            -webkit-touch-callout: none;
+            -webkit-tap-hightlight-color: transparent;
+            outline: none;
+        }
+        
+        html,
+        body {
+            height: 100%;
+        }
+        
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .box {
+            width: 200px;
+            height: 200px;
+            background: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+    <div id="inp"></div>
+    <script src="http://alloyteam.github.io/AlloyFinger/alloy_finger.js"></script>
+    <script>
+        const oBox = document.querySelector('.box');
+        const startPoint = {
+            x: 0,
+            y: 0
+        }
+        const DIRECT_VAL = 30;
+        oBox.addEventListener('touchstart', (start) => {
+            startPoint.x = start.touches[0].clientX;
+            startPoint.y = start.touches[0].clientY;
+            console.log(start.touches[0].clientX);
+        }, false);
+        oBox.addEventListener('touchmove', (move) => {
+            console.log(move.touches[0].clientX);
+            if (move.touches[0].clientX - startPoint.x > DIRECT_VAL) {
+                console.log("right");
+                return;
+            }
+            if (move.touches[0].clientX - startPoint.x <
+                DIRECT_VAL) {
+                console.log(" left");
+                return;
+            }
+            // Transform(oBox);
+            // new AlloyFinger(oBox, { swipe: function(evt) {
+            console.log(evt.direction);
+
+        })
+
+        function load() {
+            document.body.addEventListener('touchstart', touch, false);
+            document.body.addEventListener('touchmove', touch, false);
+            document.body.addEventListener('touchend', touch, false);
+
+            function touch(event) {
+                var event = event || window.event;
+
+                var oInp = document.getElementById(" inp");
+
+                switch (event.type) {
+                    case "touchstart":
+                        oInp.innerHTML = "Touch started (" + event.touches[0].clientX + "," +
+                            event.touches[0].clientY + ")";
+
+                        break;
+                    case "touchend":
+                        oInp.innerHTML = "<br>Touch end (" + event.changedTouches[0].clientX + "," + event.changedTouches[0].clientY + ")";
+
+                        break;
+                    case "touchmove":
+                        // event.preventDefault();
+                        oInp.innerHTML = "<br>Touch moved (" + event.touches[0].clientX + "," + event.touches[0].clientY + ")";
+
+                        break;
+                }
+
+            }
+        }
+        // window.addEventListener('load', load, false);
+    </script>
+    <script src="https://cdn.bootcss.com/lodash.js/4.17.10/lodash.min.js"></script>
+</body>
+
+</html>
