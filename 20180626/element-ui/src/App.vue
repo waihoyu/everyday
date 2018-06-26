@@ -35,6 +35,7 @@
         </el-col>
       </el-row>
     </header>
+
     <main>
       <div class="main-left">
         <el-menu class="el-menu-vertical-demo">
@@ -56,27 +57,62 @@
               <el-form-item label="活动名称" prop="name">
                 <el-input v-model="ruleForm.name" size="larget"></el-input>
               </el-form-item>
-              <el-form-item label="" prop="fenLei">
+              <el-form-item label="" prop="fenLei" required>
                 <el-row style="hegiht:35px" type="flex" align="middle">
                   <el-col :span="3" style="width:90px">
                     <div class="el-form-item__label">活动分类</div>
                   </el-col>
                   <el-col :span="2">
-                    <el-button @click.prevent="dialogFormFenLeiVisible=true" type="text">设置</el-button>
+                    <el-button @click.prevent="dialogFormFenLeiVisible=true" type="text" style="margin: 0;padding: 0;">设置</el-button>
                   </el-col>
                 </el-row>
                 <el-radio-group v-model="ruleForm.fenLei">
                   <el-radio v-for="item of ruleForm.fenLeis" :key="item.name" :label="item.name"></el-radio>
                 </el-radio-group>
               </el-form-item>
+              <!--  -->
+              <el-form-item label="活动标签" required>
+                <el-tag v-for="tag in ruleForm.tags" :key="tag" :closable="true" type="primary" @close="handleClose(tag)">
+                  {{tag.name}}
+                </el-tag>
+                <el-button icon="el-icon-plus" size="large" @click.native="showDialog" style="vertical-align: middle;margin: 10px;"></el-button>
+                <transition name="fade">
+                  <div class="el-form-item__error" v-show="tagsValid">{{tagsError}}</div>
+                </transition>
+              </el-form-item>
+
             </el-form>
-            <el-dialog title="设置活动分类" :visible.sync="dialogFormFenLeiVisible">
-              <el-form>
+            <!-- 弹框 -->
+            <!-- 弹框 -->
+            <el-dialog title="添加活动标签" :visible.sync="dialogFormVisible" top="35%">
+              <el-form :model="dialogForm">
                 <el-form-item>
-                  <el-tag v-for="fenLei1 of ruleForm.fenLeis" type="primary" :key="fenLei1.name" @close="handleCloseFenLei(fenLei1)" :closable="true">{{fenLei1.name}}</el-tag>
+                  <el-input v-model="dialogForm.name" auto-complete="off"></el-input>
                 </el-form-item>
               </el-form>
+              <span slot="footer" class="dialog-footer">
+                <el-button @click.native="dialogFormVisible = false">取 消</el-button>
+                <el-button type="primary" @click.native="handleTagAdd(dialogForm.name,dialogForm,ruleForm.tags)">添加</el-button>
+              </span>
             </el-dialog>
+            <!-- 设置活动分类 -->
+            <el-dialog title="设置活动分类" :visible.sync="dialogFormFenLeiVisible">
+              <el-form :model="dialogFormFenLei">
+                <el-form-item>
+                  <el-tag v-for="fenLei of ruleForm.fenLeis" :key="fenLei.name" :closable="true" type="primary" @close="handleCloseFenLei(fenLei)" style="margin:5px">
+                    {{fenLei.name}}
+                  </el-tag>
+                </el-form-item>
+                <el-form-item>
+                  <el-input v-model="dialogFormFenLei.name" auto-complete="off"></el-input>
+                </el-form-item>
+              </el-form>
+              <span slot="footer" class="dialog-footer">
+                <el-button @click.native="dialogFormFenLeiVisible = false">取 消</el-button>
+                <el-button type="primary" @click.native="handleAddItem(dialogFormFenLei.name,dialogFormFenLei,ruleForm.fenLeis)">添加</el-button>
+              </span>
+            </el-dialog>
+
           </div>
           <!-- 按钮组  上一步  下一步  发布活动 -->
           <el-button-group>
@@ -103,11 +139,16 @@ export default {
   },
   data() {
     return {
+      tagsValid: false,
+      tagsError: false,
       disabled: false,
       isLoading: false,
       step: 0,
       preStep: true,
       nextStep: true,
+      dialogForm: { name: '' },
+      dialogFormFenLei: { name: '' },
+      dialogFormVisible: false,
       dialogFormFenLeiVisible: false,
       ruleForm: {
         name: '',
@@ -128,6 +169,75 @@ export default {
     }
   },
   methods: {
+    handleTagAdd: function(tag, form, tags) {
+      if (tag && tag.trim().length !== 0) {
+        var isExist = false
+        tag = tag.trim()
+        for (var i = 0; i < tags.length; i++) {
+          if (tags[i].name == tag) {
+            isExist = true
+            break
+          }
+        }
+        if (isExist) {
+          this.$message({
+            message: '该标签已存在',
+            type: 'warning'
+          })
+        } else {
+          this.dialogFormVisible = false
+          this.dialogFormFenLeiVisible = false
+          tags.push({
+            name: tag
+          })
+        }
+      } else {
+        this.$message({
+          message: '标签不能为空',
+          type: 'warning'
+        })
+      }
+    },
+    showDialog: function() {
+      if (this.ruleForm.tags.length >= 5) {
+        this.$message({
+          message: '最多设置5个标签',
+          type: 'warning'
+        })
+      } else {
+        this.dialogFormVisible = true
+        this.dialogForm = {}
+      }
+    },
+    handleAddItem: function(tag, form, tags) {
+      if (tag && tag.trim().length !== 0) {
+        var isExist = false
+        tag = tag.trim()
+        for (var i = 0; i < tags.length; i++) {
+          if (tags[i].name == tag) {
+            isExist = true
+            break
+          }
+        }
+        if (isExist) {
+          this.$message({
+            message: '该标签已存在',
+            type: 'warning'
+          })
+        } else {
+          this.dialogFormVisible = false
+          this.dialogFormFenLeiVisible = false
+          tags.push({
+            name: tag
+          })
+        }
+      } else {
+        this.$message({
+          message: '标签不能为空',
+          type: 'warning'
+        })
+      }
+    },
     handleCloseFenLei: function(fenLei) {
       var index = this.ruleForm.fenLeis.indexOf(fenLei)
       this.ruleForm.fenLeis.splice(index, 1)
