@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HTML5 表单API </title>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<!-- 
+    html5  api 阻止了一些错误，让提交体验更细致
+    input 各种type 适合各种类型的数据，text email number password tel 浏览器内部内置了对这些的检验。
+    自动去阻止表单提交，
+    IE 不支持  html5能力  IE9+
+    
+-->
+
+<body>
+    <div class="container">
+        <form name="loginForm">
+            <div class="form-group">
+                <label for="exampleInputEmail1">Email address</label>
+                <input required type="email" name="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+            </div>
+            <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+        <div class="row">
+            <ul id="emails">
+
+            </ul>
+        </div>
+    </div>
+    <script>
+        var globalVariable = (function() {
+                // var a = 10;
+                // var b = 2;
+                // //
+                // var c = 3;
+                // var d = 4;
+                // return {
+                //     a,
+                //     b
+                // }
+
+                window.oForm = document.forms['loginForm'];
+                const arrEmail = [];
+                loadEmail();
+                // console.log(oForm);
+
+                //不支持h5的情况一定要考虑
+                //1 在本作用域内查找
+                // 2 如果1 找不到，那就去父级作用域
+                // 3 尽头是window
+
+                oForm.addEventListener('submit', (event) => {
+                    // console.log(this);
+
+                    event.preventDefault();
+                    const oEmail2 = this.oForm.email;
+                    console.log(oEmail2);
+                    const strEmail = oEmail2.value;
+                    if (!strEmail) {
+                        alert('请输入数据');
+                        return;
+                    }
+
+                    // 验证邮箱格式  正则  验证文本符合某种规则的机制  笔试会让写的
+                    // @前后两部分;.com.cn  match 
+                    const reg = /^[a-zA-Z0-9_-]+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-]+)/;
+                    if (!reg.test(strEmail)) {
+                        alert('邮箱输入错误！');
+                        return false;
+                    }
+
+                    function saveEmail(email) {
+                        // key => value 存的不只是字符串，多个？
+                        // 数组对象不可以存的，tostring
+                        let strEmail =
+                            localStorage.getItem('email');
+                        if (strEmail) {
+                            strEmail += `,${email}`;
+                            console.log(strEmail);
+                            // localStorage.setItem('email', email);
+                        } else {
+                            strEmail = email;
+                            console.log(strEmail);
+                        }
+                        localStorage.setItem('email', strEmail);
+                    }
+                    // 显示到页面上
+                    addEmail(strEmail);
+                    oForm.reset();
+                    saveEmail(strEmail);
+                    // const oEmail = this.oForm.email
+                    // console.log(oEmail);
+                    // ie9以下
+                    // input type email => text 即利用html5 内置的提醒（ email）
+                    const oEmail = document.getElementById('exampleInputEmail1');
+                    // console.log(this);
+                    //如果是箭头函数，在执行时this跟父级作用域一致
+                    // 如果是普通函数， this 会指向事件发生的元素，
+                    // this  既然是window   箭头函数
+
+                    // 性能最快  id  索引  
+                    // 事件内部  this 会指向事件发生的元素
+                });
+
+                function addEmail(email) {
+                    const strHTML = `<li>${email}</li>`
+                    document.querySelector('#emails').innerHTML += strHTML;
+                }
+
+                function loadEmail() {
+                    let email = window.localStorage.getItem('email');
+                    if (email.indexOf(',') > -1) {
+                        console.log(email);
+                    } else {
+                        addEmail(email)
+                    }
+                    const strHTML = `<li>${email}</li>`
+                    document.querySelector('#emails').innerHTML += strHTML;
+                }
+            })()
+            // 全局变量 window  顶级
+            // document 文档
+            //
+            // console.log(a);
+    </script>
+
+</body>
+
+</html>

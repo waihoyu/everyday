@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<!-- https://semantic-ui.com/ -->
+<html lang="zh-Hans">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>semantic-ui form</title>
+    <link href="https://cdn.bootcss.com/semantic-ui/2.3.1/semantic.min.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div id="root">
+        111
+    </div>
+    <!-- 
+    1.responsive web design 
+    2.整站框架  丰富的样式库级插件机制
+    满足开发 
+    3.jquery 是它的  css  js  都有  
+    vue react 结合也比较好
+    css  预编译系统支持也很好
+    特色，类名系统，极其简单强大 
+    -->
+
+    <!-- 如何做好网站优化 -->
+    <!-- 早一点，DOM Ready 事件 -->
+    <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1525327929710&di=9aa2bd5e32164164df56390f0b71040a&imgtype=jpg&src=http%3A%2F%2Fimg2.imgtn.bdimg.com%2Fit%2Fu%3D2439355652%2C1852440864%26fm%3D214%26gp%3D0.jpg" alt="" />
+    <script>
+        //什么是dom ready  面试一定会问的 
+        // image  节点 node 
+        // node 结点形成了dom 树 
+        // dom api appendChild .style.background
+        // 原材料  html  css  
+        // 树成型了后，触发dom ready 事件
+        // 解析html  构建 DOM Tree 
+        // 构建渲染树（解析css）
+        // 布局渲染树
+        // 页面的绘制 render
+        // 网页内容下载完成  资源
+        // http请求的都是资源
+        // img  Script
+        // window.onload 
+        // JS 下载有阻塞问题
+        // 放到底部  如果需求并不复杂，为了加快速度，选择弃用框架
+        //页面加载完成
+
+
+
+        // window.onload = function() {
+        //     console.log('页面加载完成');
+        // }
+
+        // $(function() {
+        //     console.log('DOM ready');
+        // })
+    </script>
+    <!-- <script src="http://www.semantic-ui.cn/examples/assets/library/jquery.min.js"></script> -->
+    <!-- <script src="https://cdn.bootcss.com/semantic-ui/2.3.1/semantic.min.js"></script> -->
+
+    <script>
+        (function(g) {
+
+            g.$ = function(param) {
+                if (typeof param === 'function') {
+                    document.addEventListener('DOMContentLoaded', param, false)
+                } else if (typeof param === 'string') {
+
+                    var ElementWrapper = function(param) {
+                        this.ele = document.querySelector(param);
+                        if (!this.ele) {
+                            throw new Error('没有这个元素');
+                        }
+                    }
+
+                    ElementWrapper.prototype = {
+                        html: function(strHTML) {
+                            this.ele.innerHTML = strHTML;
+                        }
+                    }
+
+                    const obj = new ElementWrapper(param);
+                    return obj;
+                }
+            }
+        })(window)
+        $(function() {
+            //js  动态语言  随时加属性
+            $('#root').html('莹宝最漂亮了!!!');
+        })
+    </script>
+</body>
+
+</html>

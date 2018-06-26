@@ -1,0 +1,341 @@
+body {
+  font-size: 20px;
+}
+body,
+div {
+  margin: 0;
+  padding: 0;
+  background: #ffef5e;
+}
+.border {
+  border: 1px solid #152131;
+}
+.main {
+  position: relative;
+  width: 700px;
+  margin: 50px auto;
+}
+.wanzi {
+  position: absolute;
+  top: 250px;
+  left: 100px;
+  z-index: 10;
+}
+.wanzi .hairs {
+  background: #152131;
+  width: 190px;
+  height: 250px;
+  left: -30px;
+  top: -50px;
+  position: absolute;
+  border-radius: 50% 50% 0 0;
+  overflow: hidden;
+}
+.wanzi .hairs:after {
+  content: '';
+  position: absolute;
+  width: 300px;
+  height: 200px;
+  background: #ffef5e;
+  top: 120px;
+}
+.wanzi .hair {
+  width: 35px;
+  height: 45px;
+  background: #152131;
+  position: absolute;
+  z-index: 1;
+  transform: rotate(50deg) scale(1) skew(44deg) translate(8px);
+}
+.wanzi .hair.hair1 {
+  top: 17px;
+  left: 27px;
+}
+.wanzi .hair.hair2 {
+  top: 8px;
+  left: 52px;
+}
+.wanzi .hair.hair3 {
+  top: 4px;
+  left: 73px;
+}
+.wanzi .hair.hair4 {
+  top: 0;
+  left: 90px;
+}
+.wanzi .hair.hair5 {
+  top: 4px;
+  left: 108px;
+}
+.wanzi .hair.hair6 {
+  top: 8px;
+  left: 125px;
+}
+.wanzi .hair.hair7 {
+  top: 17px;
+  left: 17px;
+}
+.wanzi .face {
+  background: #fbdac7;
+  width: 130px;
+  height: 110px;
+  position: absolute;
+  top: 0;
+  border-radius: 20px 20px 50px 50px;
+  border: 1px solid;
+}
+.wanzi .face .brow {
+  width: 42px;
+  height: 1px;
+  background: #152131;
+  position: absolute;
+  top: 28px;
+  border-radius: 50%;
+}
+.wanzi .face .brow.left-brow {
+  left: 18px;
+  transform: rotate(-10deg);
+}
+.wanzi .face .brow.right-brow {
+  right: 14px;
+  transform: rotate(10deg);
+}
+.wanzi .face .eye {
+  width: 14px;
+  height: 14px;
+  background: #000;
+  position: absolute;
+  top: 38px;
+  z-index: 2;
+  border-radius: 50%;
+}
+.wanzi .face .eye.left-eye {
+  left: 32%;
+  transform: rotate(-10deg);
+}
+.wanzi .face .eye.right-eye {
+  right: 32%;
+  transform: rotate(10deg);
+}
+.wanzi .face .mouth {
+  border: 1px solid #152131;
+  width: 30px;
+  height: 30px;
+  left: 38%;
+  background: #d96b6e;
+  position: absolute;
+  top: 58px;
+  z-index: 2;
+  border-radius: 50%;
+  transform: rotate(90deg);
+}
+.wanzi .face .mouth:after {
+  content: '';
+  position: absolute;
+  width: 24px;
+  height: 43px;
+  background: #fbdac7;
+  top: -7px;
+  left: -5px;
+  transform: rotate(0deg);
+}
+.wanzi .face .ear {
+  width: 10px;
+  height: 20px;
+  background: #fbdac7;
+  position: absolute;
+  top: 40px;
+  z-index: 2;
+}
+.wanzi .face .ear.left-ear {
+  border-radius: 5px 0 0 10px;
+  left: -11px;
+}
+.wanzi .face .ear.right-ear {
+  border-radius: 0 5px 10px 0;
+  right: -11px;
+}
+.wanzi .face .blusher {
+  width: 14px;
+  height: 14px;
+  background: #f79c99;
+  position: absolute;
+  top: 71px;
+  z-index: 2;
+  border-radius: 50%;
+  left: 3px;
+}
+.wanzi .face .blusher.left-blusher {
+  left: 112px;
+  transform: rotate(-10deg);
+}
+.wanzi.right-blusher {
+  right: 32%;
+  transform: rotate(10deg);
+}
+.wanzi:after {
+  content: "";
+  width: 14px;
+  height: 14px;
+  background: #fbdac7;
+  position: absolute;
+  bottom: -12px;
+  left: 64px;
+  top: 111px;
+  margin-left: -7px;
+  border: 1px solid #152131;
+}
+.clothes {
+  background: #fff;
+  width: 70px;
+  height: 80px;
+  position: absolute;
+  top: 126px;
+  left: 29px;
+  z-index: 2;
+  border-radius: 30% 30% 10px 10px;
+  overflow: hidden;
+  border: 1px solid #152131;
+}
+.clothes .collar {
+  width: 10px;
+  height: 20px;
+  background: #fff;
+  position: absolute;
+  top: 40px;
+  z-index: 2;
+}
+.clothes .collar.left-collar {
+  z-index: 3;
+  position: absolute;
+  border: 1px solid #152131;
+  width: 20px;
+  height: 10px;
+  background: #fff;
+  top: 3px;
+  left: 6px;
+  transform: rotate(50deg);
+}
+.clothes .collar.right-collar {
+  z-index: 3;
+  position: absolute;
+  border: 1px solid #152131;
+  width: 20px;
+  height: 10px;
+  top: 3px;
+  left: 40px;
+  background: #fff;
+  transform: rotate(-50deg);
+}
+.clothes .straps {
+  width: 10px;
+  height: 20px;
+  background: #e9003a;
+  position: absolute;
+  top: 40px;
+  z-index: 2;
+}
+.clothes .straps.left-straps {
+  z-index: 2;
+  position: absolute;
+  border: 1px solid #152131;
+  width: 112px;
+  height: 6px;
+  background: #e9003a;
+  top: 3px;
+  left: 1px;
+  transform: rotate(91deg);
+}
+.clothes .straps.right-straps {
+  z-index: 2;
+  position: absolute;
+  border: 1px solid #152131;
+  width: 112px;
+  height: 6px;
+  top: 3px;
+  left: -46px;
+  background: #e9003a;
+  transform: rotate(91deg);
+}
+.belt {
+  width: 70px;
+  height: 10px;
+  background: #e9003a;
+  position: absolute;
+  top: 189px;
+  left: 29px;
+  z-index: 2;
+  border: 1px solid;
+}
+.arm {
+  width: 126px;
+  height: 70px;
+  border-radius: 50%;
+  background: #fff;
+  border: 1px solid #152131;
+  z-index: 1;
+  position: absolute;
+  top: 130px;
+  z-index: 0;
+}
+.arm:after {
+  content: "";
+  position: absolute;
+  background: #ffef5e;
+  width: 91px;
+  height: 60px;
+  left: 18px;
+  top: 5px;
+  border-radius: 50%;
+  border: 1px solid #152131;
+}
+.skirt {
+  background: #ed023a;
+  background: none;
+  border-color: #e9003a transparent;
+  -webkit-border-image: none;
+  -o-border-image: none;
+  border-image: none;
+  border-style: solid;
+  border-width: 0px 30px 50px;
+  height: 0;
+  left: -1px;
+  position: absolute;
+  top: 201px;
+  width: 72px;
+  z-index: 3;
+  border-radius: 0 0 50% 50%;
+}
+.skirt .line {
+  width: 1px;
+  height: 30px;
+  position: absolute;
+  background: #000;
+  top: 10px;
+  -webkit-transform-origin: 0 0;
+  -ms-transform-origin: 0 0;
+  transform-origin: 0 0;
+}
+.skirt .line.line1 {
+  left: 10px;
+  transform: rotate(25deg);
+}
+.skirt .line.line2 {
+  left: 23px;
+  transform: rotate(18deg);
+}
+.skirt .line.line3 {
+  left: 36px;
+  transform: rotate(3deg);
+}
+.skirt .line.line4 {
+  left: 48px;
+  transform: rotate(-15deg);
+}
+.skirt .line.line5 {
+  left: 61px;
+  transform: rotate(-33deg);
+}
+.granda .hairs {
+  background: #fff;
+}
