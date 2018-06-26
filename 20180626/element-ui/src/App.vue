@@ -51,6 +51,33 @@
             <el-step title="分享设置"></el-step>
             <el-step title="个性设置"></el-step>
           </el-steps>
+          <div class="step1">
+            <el-form class="demo-ruleForm" ref="ruleForm" label-position="top" :model="ruleForm">
+              <el-form-item label="活动名称" prop="name">
+                <el-input v-model="ruleForm.name" size="larget"></el-input>
+              </el-form-item>
+              <el-form-item label="" prop="fenLei">
+                <el-row style="hegiht:35px" type="flex" align="middle">
+                  <el-col :span="3" style="width:90px">
+                    <div class="el-form-item__label">活动分类</div>
+                  </el-col>
+                  <el-col :span="2">
+                    <el-button @click.prevent="dialogFormFenLeiVisible=true" type="text">设置</el-button>
+                  </el-col>
+                </el-row>
+                <el-radio-group v-model="ruleForm.fenLei">
+                  <el-radio v-for="item of ruleForm.fenLeis" :key="item.name" :label="item.name"></el-radio>
+                </el-radio-group>
+              </el-form-item>
+            </el-form>
+            <el-dialog title="设置活动分类" :visible.sync="dialogFormFenLeiVisible">
+              <el-form>
+                <el-form-item>
+                  <el-tag v-for="fenLei1 of ruleForm.fenLeis" type="primary" :key="fenLei1.name" @close="handleCloseFenLei(fenLei1)" :closable="true">{{fenLei1.name}}</el-tag>
+                </el-form-item>
+              </el-form>
+            </el-dialog>
+          </div>
           <!-- 按钮组  上一步  下一步  发布活动 -->
           <el-button-group>
             <el-button v-show="preStep" @click.native.prevent="handlePreStep">上一步</el-button>
@@ -80,10 +107,34 @@ export default {
       isLoading: false,
       step: 0,
       preStep: true,
-      nextStep: true
+      nextStep: true,
+      dialogFormFenLeiVisible: false,
+      ruleForm: {
+        name: '',
+        fenLeis: [
+          {
+            name: '未发布'
+          },
+          {
+            name: '测试活动'
+          },
+          {
+            name: '精彩活动'
+          }
+        ],
+        fenLei: '测试活动',
+        tags: []
+      }
     }
   },
   methods: {
+    handleCloseFenLei: function(fenLei) {
+      var index = this.ruleForm.fenLeis.indexOf(fenLei)
+      this.ruleForm.fenLeis.splice(index, 1)
+    },
+    handleClose: function(tag) {
+      this.dialogFormFenLeiVisible = false
+    },
     change: function(event) {
       this.isLoading = !this.isLoading
       console.log(event)
