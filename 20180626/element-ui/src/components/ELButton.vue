@@ -11,20 +11,20 @@
 export default {
   name: 'ELButton',
   props: {
-    loading: Boolean,
-    disabled: Boolean,
-    type: {
-      type: String,
-      default: 'default'
-    },
-    icon: {
-      type: String,
-      default: ''
-    },
-    nativeType: {
-      type: String,
-      default: 'button'
-    }
+    // loading: Boolean,
+    // disabled: Boolean,
+    // type: {
+    //   type: String,
+    //   default: 'default'
+    // },
+    // icon: {
+    //   type: String,
+    //   default: ''
+    // },
+    // nativeType: {
+    //   type: String,
+    //   default: 'button'
+    // }
   },
   computed: {
     buttonDisabled() {
