@@ -20,7 +20,7 @@
     <!-- <el-button :disabled="disabled" type="danger">提交</el-button>
      -->
     <form action="http://www.baidu.com" method="get">
-      <el-button type="primary" native-type="submit"> 提交</el-button>
+      <el-button type="primary" native-type="button" @click="doSubmit"> 提交</el-button>
     </form>
   </div>
 </template>
@@ -45,6 +45,9 @@ export default {
   methods: {
     change: function(event) {
       this.isLoading = !this.isLoading
+      console.log(event)
+    },
+    doSubmit: function(event) {
       console.log(event)
     }
   },
