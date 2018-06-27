@@ -1,12 +1,11 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <HelloWorld/>
+    <Login/>
   </div>
 </template>
 
 <script>
-import Login from '@/views/Login'
+import Login from './components/views/Login'
 
 export default {
   name: 'App',
