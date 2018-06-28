@@ -1,16 +1,18 @@
 <template>
 
   <div id="app">
-    <ele-radio-group v-model="sex">
+    <comment/>
+    <!-- <ele-radio-group v-model="sex">
       <ele-radio label="男"></ele-radio>
       <ele-radio label="女"></ele-radio>
-    </ele-radio-group>
+    </ele-radio-group> -->
     <!-- <Login/> -->
   </div>
 </template>
 
 <script>
 // yarn add node-sass sass-loader -D
+import Comment from './components/Comment'
 import Login from './components/views/Login'
 import EleRadioGroup from './components/EleRadioGroup'
 import EleRadio from './components/EleRadio'
@@ -23,6 +25,7 @@ export default {
     }
   },
   components: {
+    Comment,
     Login,
     EleRadioGroup,
     EleRadio
