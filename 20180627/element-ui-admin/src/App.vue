@@ -2,8 +2,8 @@
 
   <div id="app">
     <ele-radio-group v-model="sex">
-      <ele-radio :label="0">男</ele-radio>
-      <ele-radio :label="1">女</ele-radio>
+      <ele-radio label="男"></ele-radio>
+      <ele-radio label="女"></ele-radio>
     </ele-radio-group>
     <!-- <Login/> -->
   </div>
@@ -13,6 +13,7 @@
 // yarn add node-sass sass-loader -D
 import Login from './components/views/Login'
 import EleRadioGroup from './components/EleRadioGroup'
+import EleRadio from './components/EleRadio'
 export default {
   name: 'App',
   data() {
@@ -23,7 +24,8 @@ export default {
   },
   components: {
     Login,
-    EleRadioGroup
+    EleRadioGroup,
+    EleRadio
   }
 }
 </script>
