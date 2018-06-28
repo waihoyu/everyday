@@ -1,21 +1,34 @@
 <template>
-    <div class="login-container">
-        <el-form class="login-form" ref="loginForm" autoComlete="on" :model="loginForm" :rules="loginRules" label-position="left">
-            <div class="title-container">
-                <h3 class="title">
-                    系统登录
-                </h3>
-            </div>
-            <el-form-item prop="username">
-                <el-input name="username" type="text" v-model="loginForm.username" autoComplete="on" placeholder="请输入用户名"></el-input>
-            </el-form-item>
-            <el-form-item prop="password">
-                <el-input name="password" type="password" v-model="loginForm.password" autoComplete="on" @keyup.enter.native="handleLogin"></el-input>
-            </el-form-item>
-            <el-button type="primary" :loading="loading" style="width:100%;margin-bottom:30px;" @click.native.prevent="handleLogin">登录</el-button>
-        </el-form>
-    </div>
+  <div class="login-container">
+    <el-form class="login-form" ref="loginForm" autoComlete="on" :model="loginForm" :rules="loginRules" label-position="left">
+      <div class="title-container">
+        <h3 class="title">
+          系统登录
+        </h3>
+      </div>
+      <el-form-item prop="username">
+        <el-input name="username" type="text" v-model="loginForm.username" autoComplete="on" placeholder="请输入用户名"></el-input>
+      </el-form-item>
+      <el-form-item prop="password">
+        <el-input name="password" type="password" v-model="loginForm.password" autoComplete="on" @keyup.enter.native="handleLogin"></el-input>
+      </el-form-item>
+      <el-button type="primary" :loading="loading" style="width:100%;margin-bottom:30px;" @click.native.prevent="handleLogin">登录</el-button>
+      <div class="tips">
+        <span>用户名：admin</span>
+        <span>密码：111111</span>
+      </div>
+      <div class="tips">
+        <span>用户名：editor</span>
+        <span>密码：111111</span>
+      </div>
+      <el-button class="thirdparty-button" type="primary" @click="showDialog=true">第三方登录</el-button>
+    </el-form>
+    <el-dialog title="第三方登录" :visible="showDialog" append-to-body>
+      微信，QQ，微博
+    </el-dialog>
+  </div>
 </template>
+
 <script>
 import { isvalidUsername } from '../../utils/validate'
 export default {
@@ -36,6 +49,7 @@ export default {
     }
     const validate = () => {}
     return {
+      showDialog: false,
       loading: false,
       loginRules: {
         username: [
