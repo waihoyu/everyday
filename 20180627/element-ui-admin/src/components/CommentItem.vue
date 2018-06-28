@@ -6,7 +6,7 @@
 <script>
 export default {
   props: {
-    content: String
+    content: Object
   }
 }
 </script>

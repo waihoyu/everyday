@@ -3,7 +3,7 @@
     <comment-form @addComment="addComment" />
     <comment-list :list="list">
     </comment-list>
-    <pagination/>
+    <pagination :totalCount="totalCount" :currentPage="currentPage" :pagesize="pagesize" @turnPage="turnPage" />
   </div>
 </template>
 
@@ -24,6 +24,7 @@ export default {
   },
 
   methods: {
+    turnPage(curr) {},
     addComment(msg) {
       console.log(msg)
       this.totalData.push({ text: msg })
