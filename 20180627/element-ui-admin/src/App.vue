@@ -1,7 +1,8 @@
 <template>
 
   <div id="app">
-    <comment/>
+    <ArticleTable></ArticleTable>
+    <!-- <comment/> -->
     <!-- <ele-radio-group v-model="sex">
       <ele-radio label="男"></ele-radio>
       <ele-radio label="女"></ele-radio>
@@ -16,6 +17,7 @@ import Comment from './components/Comment'
 import Login from './components/views/Login'
 import EleRadioGroup from './components/EleRadioGroup'
 import EleRadio from './components/EleRadio'
+import ArticleTable from './components/views/ArticleTable'
 export default {
   name: 'App',
   data() {
@@ -25,6 +27,7 @@ export default {
     }
   },
   components: {
+    ArticleTable,
     Comment,
     Login,
     EleRadioGroup,
