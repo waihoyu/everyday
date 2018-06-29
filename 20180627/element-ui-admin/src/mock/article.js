@@ -29,7 +29,7 @@ export default {
         console.log(config)
         const { importance, type, title, page = 1, limit = 20, sort } = param2Obj(config.url)
         console.log(importance, type, title, page, limit, sort)
-        let mockList = List.filter(itme => {
+        let mockList = List.filter(item => {
             if (importance && item.importance !== +importance) {
                 return false
             }

@@ -1,11 +1,20 @@
 <template>
     <div class="app-container">
         <div class="filter-container">
+            <el-select v-model="listQuery.importance" placeholder="重要性" class="filter-item">
+                <el-option v-for="item in importanceOptions" :key="item" :label="item" :value="item"></el-option>
+            </el-select>
+            <el-button class="filter-item" type="primary" icon="el-icon-search" @click="handleFilter">查询</el-button>
         </div>
         <el-table :data="list" v-loading="listLoading">
             <el-table-column label="序号" align="center" width="65">
                 <template slot-scope="scope">
                     <span>{{scope.row.id}}</span>
+                </template>
+            </el-table-column>
+            <el-table-column label="重要性" align="center" width="150">
+                <template slot-scope="scope">
+                    <span>{{scope.row.importance}}</span>
                 </template>
             </el-table-column>
             <el-table-column label="日期" align="center" width="150">
@@ -46,6 +55,7 @@
             </div>
         </el-dialog>
         <div class="pagination-container">
+            <el-pagination :curren-page="listQuery.page" :page-size="listQuery.limit" :total="total" layout="total,sizes,prev,pager,next,jumper" @current-change="hanleCurrentChange"></el-pagination>
         </div>
     </div>
 </template>
@@ -54,6 +64,8 @@ import { fetchList } from '@/api/article.js'
 export default {
   data() {
     return {
+      importanceOptions: [1, 2, 3],
+      total: 0,
       listLoading: false,
       dialogFormVisible: false,
       dataModal: {
@@ -81,6 +93,14 @@ export default {
     this.getList()
   },
   methods: {
+    handleFilter() {
+      this.listQuery.page = 1
+      this.getList()
+    },
+    hanleCurrentChange(page) {
+      this.listQuery.page = page
+      this.getList()
+    },
     updateData() {},
     getList() {
       // title:
