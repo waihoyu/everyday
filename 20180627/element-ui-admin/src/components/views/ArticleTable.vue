@@ -86,7 +86,7 @@ export default {
       // title:
       this.listLoading = true
       fetchList(this.listQuery).then(response => {
-        console.log(response.data.items)
+        // console.log(response.data.items)
         this.list = response.data.items
         this.total = response.data.total
         setTimeout(() => {
@@ -98,7 +98,7 @@ export default {
       this.dialogFormVisible = true
       this.dataModal = Object.assign({}, row)
       //this.dataModal = {}
-      console.log(row)
+      //   console.log(row)
     }
   }
 }
