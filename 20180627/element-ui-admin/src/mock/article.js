@@ -1,4 +1,5 @@
 import Mock from 'mockjs'
+import { param2Obj } from "@/utils/index"
 const List = []
 const count = 100
 const baseContent = '<p>我是测试数据我是测试数据</p><p><img src="https://wpimg.wallstcn.com/4c69009c-0fd4-4153-b112-6cb53d1cf943"></p>'
@@ -19,16 +20,31 @@ for (let i = 0; i < count; i++) {
         display_time: '@datetime',
         comment_disabled: true,
         pageviews: '@integer(300,500)',
-        image_uri: ""
+        image_uri
     }))
 }
 
 export default {
-    getList: () => {
-
+    getList: (config) => {
+        console.log(config)
+        const { importance, type, title, page = 1, limit = 20, sort } = param2Obj(config.url)
+        console.log(importance, type, title, page, limit, sort)
+        let mockList = List.filter(itme => {
+            if (importance && item.importance !== +importance) {
+                return false
+            }
+            if (type && item.type !== type) {
+                return false
+            }
+            if (title && item.title.indexof(title) < 0) {
+                return false
+            }
+            return true
+        })
+        const pageList = mockList.filter((item, index) => index < limit * page && index >= limit * (page - 1))
         return {
-            total: List.length,
-            items: List
+            total: mockList.length,
+            items: pageList
         }
     }
 }
