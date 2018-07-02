@@ -45,11 +45,13 @@
                 console.log($(data).find('p').html());
             })         
         });
+
         window.onpopstate = (event)=>{
             if (event.state) {
                 displayContent(event.state)
             }
         }
+
         function createState(node){
             let state = {
                 content:node.find('.content').text(),
@@ -58,10 +60,12 @@
             }
             return state;            
         }
+
         function displayContent(state){
             $('.content').text(state.content)
             $('.photo').attr('src',state.photo)
         }
+        
     </script>
 </body>
 
