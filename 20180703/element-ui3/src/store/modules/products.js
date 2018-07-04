@@ -8,25 +8,27 @@ import shop from '../../api/shop'
 // mutations  改变  会计  记账
 //const state ={ }
 
-
-const state ={
-    all:[]
+const state = {
+    all: []
 }
-
 
 const getters = {}
 
 const actions = {
     getAllProducts({ commit }) {
         shop.getProducts(products => {
-            commit('setProducts',products)
+            commit('setProducts', products)
         })
     }
 }
 
 const mutations = {
-    setProducts(state,products){
+    setProducts(state, products) {
         state.all = products
+    },
+    decrementProductInventory(state, { id }) {
+        const product = state.all.find(product => product.id === id)
+        product.inventory--
     }
 }
 
