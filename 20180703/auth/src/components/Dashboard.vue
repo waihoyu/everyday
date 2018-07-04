@@ -1,15 +1,17 @@
 <template>
-<div>Dashboard</div>
+    <div>Dashboard</div>
 </template>
 <script>
-export default {
-    mounted () {
-        setTimeout(()=>{
-            this.$router.replace('/')
-        },1000)
-        console.log(this.$router);
+    export default {
+        mounted() {
+            setTimeout(() => {
+                this.$router.replace('/')
+            }, 1000)
+            console.log(this.$router);
+        }
     }
-}
 </script>
-<style>
+<style lang="stylus">
+    body
+        color red  
 </style>

@@ -2,10 +2,14 @@
     <div>login
         <form @submit.prevent="login">
             <label for="">
-                <input type="text" v-model="email" placeholder="email">
+                <input type="text"
+                       v-model="email"
+                       placeholder="email">
             </label>
             <label for="">
-                <input type="password" v-model="pass" placeholder="password">
+                <input type="password"
+                       v-model="pass"
+                       placeholder="password">
             </label>
             <button type="submit">Login</button>
         </form>
@@ -22,7 +26,6 @@ export default {
   },
   methods: {
     login() {
-      //   console.log('e')
       auth.login(this.email, this.pass, loggedIn => {
         console.log(loggedIn)
         if (loggedIn) {
