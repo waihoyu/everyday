@@ -9,13 +9,47 @@
                 <span>当前定位的城市：</span>
                 <span>定位不准时，请在城市列表中选择</span>
             </div>
+            <router-link :to="'/city/' + guessCityid" class="guess_city">
+                <span>{{guessCity}}</span>
+            </router-link>
         </nav>
+        <section id="hot_city_container">
+            <h4 class="city_title">热门城市</h4>
+            <ul class="cityListul clear">
+                <router-link :to="'/city' + item.id" v-for="item in hotcity" :key="item.id" tag="li">    
+                {{item.name}}            
+                </router-link>
+            </ul>
+        </section>
     </div>
 </template>
 
 <script>
 import headTop from "@/components/headTop.vue"
+import { cityGuess, hotcity } from '@/api/getData'
+
 export default {
+    //生命周期  城市 不准确 ，又耗时的api  阻塞组件渲染
+    mounted() {
+        cityGuess().then(res => res.json()).then(data => {
+            this.guessCityid = data.id
+            this.guessCity = data.name
+            console.log(data.name);
+        })
+        hotcity().then(res => res.json()).then(data => {
+            this.hotcity = data
+        })
+        // hotcity().then(res => res.json()).then(data => {
+        //     this.hotcity = data
+        // })
+    },
+    data() {
+        return {
+            guessCityid: '123',
+            guessCity: '北京',
+            hotcity:[]
+        } 
+    },
     components:{
         'head-top':headTop
     }
