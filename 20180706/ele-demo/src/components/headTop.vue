@@ -1,21 +1,34 @@
 <template>
-<header id="head_top">
-    <div>
-        headTop
-        <slot name="logo"></slot>
-    </div>
-</header>
-
+    <header id="head_top">
+        <div>
+            headTop
+            <slot name="logo"></slot>
+            <router-link class="head_login" :to="userInfo ? '/profile':'/login'">
+            <span class="login_span" v-if="!userInfo">登录|注册</span>
+            </router-link>
+        </div>
+    </header>
 </template>
 
 <script>
-export default {
-
-}
+    import {mapState} from 'vuex'
+    export default {
+        computed:{
+            ...mapState([
+                'userInfo'
+            ])
+        }
+    }
 </script>
 
 <style lang="stylus" scoped>
     @import '../style/mixin'
+    .head_logo
+        left 0.4em
+        font-weight 400
+        sc(0.7rem,#FFF)
+        wh(2.3rem,0.7rem)
+        ct()
     #head_top
         background-color $blue
         position fixed
@@ -23,5 +36,11 @@ export default {
         left 0
         top 0
         wh(100%,1.95rem)
+    .head_login
+        right 0.55rem
+        sc(0.65rem,#fff)
+        ct()
+        .login_span
+            color #ffffff
 </style>
 

@@ -1,9 +1,19 @@
 $blue = #3190e8
+$bc = #e4e4e4
+$fc = #fff
 
 //任何一个盒子可能都要利用的css
 wh($width,$height)
     width $width
     height $height
+sc($fz,$c)
+    font-size $fz
+    color $c
+ct()
+    position absolute
+    top 50%
+    transform translateY(-50%)
+fj($type=space-between)
+    display flex
+    justify-content $type
     
-
-
