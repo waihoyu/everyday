@@ -5,7 +5,6 @@ const state = {
 //对state 的计算或处理
 //vuex store  一棵树
 
-
 const getters = {
     cartProducts:(state,getters,rootState) => {
         return state.items.map(({id,quantity})=>{const product = rootState.products.all.find(
@@ -44,7 +43,6 @@ const mutations = {
         const cartItem = state.items.find(item => item.id === id)
         cartItem.quantity++
     }
-    
 }
 
 export default {

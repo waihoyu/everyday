@@ -9,15 +9,14 @@
         </ul>
     </div>
 </template>
-<script>
 
+<script>
 import {mapState,mapActions} from 'vuex'
 export default {
     computed: mapState({products: state => state.products.all}),
     methods: mapActions(['addProductToCart']),
     created () {this.$store.dispatch('getAllProducts')}
 }
-
 </script>
 
 <style>

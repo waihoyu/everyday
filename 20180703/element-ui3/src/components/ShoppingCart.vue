@@ -7,7 +7,7 @@
                  {{product.title}}-{{product.price | currency}} x  {{product.quantity}}
             </li>
         </ul>
-        <p>total:{{total}}</p>
+        <p>total:{{total | currency}}</p>
     </div>
 </template>
 
@@ -16,7 +16,7 @@ import {mapGetters,mapState} from 'vuex'
 
 export default {
     computed:{
-        ...mapState({
+     ...mapState({
         items: state => state.cart.items,
         checkoutStatus: status => state.cart.checkoutStatus
     }),
