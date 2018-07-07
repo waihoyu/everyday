@@ -8,6 +8,14 @@ const http = axios.create({
     timeout:1000
 })
 
+//address 文本不能进行距离计算
+//lbs lat lng
+
+export const searchplace = (cityid,keyword) =>  new Promise((resolve,reject)=>{
+    const url = `/v1/pois?type=search&city_id=${cityid}&keyword=${keyword}`
+    http.get(url).then(res => resolve(res))
+})
+
 export const cityGuess  = ()=> fetch('https://elm.cangdu.org/v1/cities?type=guess')
 //https://elm.cangdu.org/v1/cities?type=guess
 
