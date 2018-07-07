@@ -4,6 +4,7 @@ import Router from 'vue-router'
 const home = () => import('@/pages/home')
 const login = () => import('@/pages/login')
 //延迟加载
+const city = () => import('@/pages/city')
 
 Vue.use(Router)
 
@@ -23,6 +24,11 @@ export default new Router({
       meta:{
         keepalive:true
       }
+    },
+    {
+      //动态路由
+      path:'/city/:cityid',
+      component: city
     }
   ]
 })

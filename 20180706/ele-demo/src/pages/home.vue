@@ -25,19 +25,38 @@
 
 <script>
 import headTop from "@/components/headTop.vue"
-import { cityGuess, hotcity } from '@/api/getData'
+import { cityGuess, hotcity,_getCityGuess,_getHotcity } from '@/api/getData'
 
 export default {
     //生命周期  城市 不准确 ，又耗时的api  阻塞组件渲染
     mounted() {
-        cityGuess().then(res => res.json()).then(data => {
-            this.guessCityid = data.id
-            this.guessCity = data.name
-            console.log(data.name);
-        })
-        hotcity().then(res => res.json()).then(data => {
-            this.hotcity = data
-        })
+            this.getCityGuess()
+            this.getHotcity()
+        // hotcity().then(res => res.json()).then(data => {
+        //     this.hotcity = data
+        // })
+    },
+
+//     async mounted () {
+//     const cityData =  await cityGuess()
+//     this.guessCityid = cityData.id
+//     this.guessCity = cityData.name
+//     this.hotcity =  await hotcity();
+//   }
+
+    methods: {
+
+       async getCityGuess() {
+            const res = await _getCityGuess()
+            console.log(res);
+            this.guessCityid = res.id;
+            this.guessCity = res.name
+        },
+       async getHotcity() {
+            const res = await _getHotcity()
+            this.hotcity = res
+        }
+        
         // hotcity().then(res => res.json()).then(data => {
         //     this.hotcity = data
         // })
@@ -50,7 +69,7 @@ export default {
         } 
     },
     components:{
-        'head-top':headTop
+        'head-top': headTop
     }
 }
 </script>
