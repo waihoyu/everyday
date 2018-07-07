@@ -1,7 +1,6 @@
 <template>
     <div>home
-        <head-top signin-up="home">
-            <span>default</span>
+        <head-top siginUp="home">
             <span slot="logo" class="head_logo">ele.me</span>
         </head-top>
         <nav class="city_nav">
