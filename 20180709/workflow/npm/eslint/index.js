@@ -1,0 +1,1 @@
+let str = 'some  value';let a = ''; const arr = [1,2,3];a =  str + ' ';console.log(arr.push(a));
