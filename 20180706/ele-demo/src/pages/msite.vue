@@ -76,9 +76,12 @@ export default {
       foodArr[j] = resArr.splice(0, 8);
     }
     this.foodTypes = foodArr;
-    setTimeout(()=>{
+    this.$nextTick(()=>{
         new Swiper('.swiper-container',{loop: true})
-        },1)
+    })
+    
+    //mvvm 数据改变 到 界面更新 vnode => dom diff 差  异步  node  性能优化
+    //vue 等待这个过程结束呢 
   }
 }
 </script>
