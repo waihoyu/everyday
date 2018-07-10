@@ -1,5 +1,5 @@
 <template>
-    <div></div>
+    <div>LogTime</div>
 </template>
 
 <script>
