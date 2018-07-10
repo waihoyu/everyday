@@ -7,18 +7,29 @@
     <title>Document</title>
     <style>
     div{
-        width: 300px;
+        width: 400px;
         height: 300px;
         background: blue;
+        display: flex;
+        justify-content: space-around;
+        justify-items: center;
+        flex-wrap: wrap ;
     }
     span {
+        /* top: -50%; */
+        /* padding: 10px; */
+        word-wrap:  break-word;
+        margin:  auto 20px ;
         width: 100px;
         height: 100px;
-        line-height: 12px;
+        line-height: 100px;
         background: red;
+        text-align: center;      
+        /* display: block; */
     }
     </style>
 </head>
+
 <body>
     <div>
         <span>
@@ -26,6 +37,12 @@
         </span>
         <span>
             2
+        </span>
+        <span>
+           3
+        </span>
+        <span>
+           4
         </span>
     </div>
 </body>
