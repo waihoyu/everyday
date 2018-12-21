@@ -1,6 +1,8 @@
 .DS_Store
 node_modules/
 vue_mall/node_modules/
+vue_mall/vue_mall/package.lock.json
+vue_mall/package.lock.json
 mall/node_modules/
 dist/
 npm-debug.log*
